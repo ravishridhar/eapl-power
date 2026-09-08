@@ -4,8 +4,8 @@
   "description": "",
   "main": "js/main.js",
   "scripts": {
-    "build": "npx @tailwindcss/cli -i ./css/input.css -o ./css/style.css --minify",
-    "dev": "npx @tailwindcss/cli -i ./css/input.css -o ./css/style.css --watch",
+    "build": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --minify",
+    "dev": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --watch",
     "deploy": "npm run build && gh-pages -d ."
   },
   "keywords": [],
