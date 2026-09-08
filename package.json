@@ -5,7 +5,8 @@
   "main": "js/main.js",
   "scripts": {
     "build": "npx @tailwindcss/cli -i ./css/input.css -o ./css/style.css --minify",
-    "dev": "npx @tailwindcss/cli -i ./css/input.css -o ./css/style.css --watch"
+    "dev": "npx @tailwindcss/cli -i ./css/input.css -o ./css/style.css --watch",
+    "deploy": "npm run build && gh-pages -d ."
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,8 @@
     "@tailwindcss/cli": "^4.3.3",
     "swiper": "^14.2.0",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
