@@ -37,14 +37,10 @@ if (rangeProducts) {
   new Swiper(rangeProducts, {
     loop: true,
     speed: 550,
-    spaceBetween: 24,
-    slidesPerView: 1.12,
+    spaceBetween: 25,
+    slidesPerView: 'auto',
     pagination: { el: '.range-pagination', clickable: true },
     navigation: { prevEl: '.range-prev', nextEl: '.range-next' },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 4 },
-    },
     on: {
       realIndexChange(swiper) {
         document.querySelector('.range-current').textContent = formatCount(swiper.realIndex + 1);
