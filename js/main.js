@@ -19,15 +19,15 @@ if (document.body.classList.contains('listing-page')) {
     if (!menu) return;
     const dropdown = document.createElement('div');
     dropdown.className = 'nav-dropdown';
-    dropdown.innerHTML = menu[1].map((entry) => `<a href="index.html#range">${entry}</a>`).join('');
+    dropdown.innerHTML = menu[1].map((entry) => `<a href="../#range">${entry}</a>`).join('');
     item.append(dropdown);
   });
 
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileProducts = [
-    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], ['home-inverters.html', '#sino', '#electro']],
-    ['Inverter Batteries', ['Tall Tubular Batteries', 'Short Tubular Batteries', 'Solar Batteries'], ['index.html#range', 'index.html#range', 'index.html#range']],
-    ['LithTec Combo', ['LithTec Home UPS', 'Lithium Batteries', 'Complete Combo Systems'], ['index.html#range', 'index.html#range', 'index.html#range']],
+    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], ['./', '#sino', '#electro']],
+    ['Inverter Batteries', ['Tall Tubular Batteries', 'Short Tubular Batteries', 'Solar Batteries'], ['../#range', '../#range', '../#range']],
+    ['LithTec Combo', ['LithTec Home UPS', 'Lithium Batteries', 'Complete Combo Systems'], ['../#range', '../#range', '../#range']],
   ];
 
   mobileProducts.forEach(([label, entries, links]) => {
@@ -35,7 +35,7 @@ if (document.body.classList.contains('listing-page')) {
     if (!sourceLink) return;
     const group = document.createElement('div');
     group.className = 'mobile-nav-group';
-    group.innerHTML = `<button class="mobile-nav-trigger">${label}<img src="images/chevron.svg" alt=""></button><div class="mobile-submenu">${entries.map((entry, index) => `<a href="${links[index]}">${entry}</a>`).join('')}</div>`;
+    group.innerHTML = `<button class="mobile-nav-trigger">${label}<img src="../images/chevron.svg" alt=""></button><div class="mobile-submenu">${entries.map((entry, index) => `<a href="${links[index]}">${entry}</a>`).join('')}</div>`;
     sourceLink.replaceWith(group);
   });
 }
