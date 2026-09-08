@@ -1,0 +1,29 @@
+.battery-hero {
+  background-image: url('../images/batteries-hero.png');
+  background-position: center 43%;
+}
+.battery-hero::after {
+  background: linear-gradient(90deg, rgba(10,46,99,.6) 0%, rgba(10,46,99,.28) 36%, rgba(10,46,99,0) 60%), linear-gradient(180deg, rgba(10,46,99,0) 84%, rgba(10,46,99,.85) 100%);
+}
+.battery-tagline { margin-top: 48px; color: #fff; font-size: 24px; line-height: 28px; font-weight: 800; font-style: italic; }
+.battery-tagline span { color: #db5b13; }
+.battery-card { min-height: 597px; }
+.battery-card:first-child { min-height: 608px; }
+.battery-card .series-copy { align-self: start; margin-top: 0; }
+.battery-card .series-copy h2 { line-height: 44px; }
+.battery-card .series-visual img { object-fit: cover; }
+
+@media (min-width: 1024px) {
+  .battery-hero h1 { font-size: 72px; }
+  .battery-hero .listing-hero-content > div:last-child { margin-top: 75px; }
+  .battery-card { padding-top: 61px; padding-bottom: 61px; }
+  .battery-card:first-child { padding-top: 50px; padding-bottom: 50px; }
+}
+
+@media (max-width: 1023px) {
+  .battery-hero { background-position: 61% center; }
+  .battery-hero h1 { width: 300px; white-space: normal; font-size: 42px; line-height: 46px; }
+  .battery-tagline { margin-top: 34px; font-size: 20px; }
+  .battery-card, .battery-card:first-child { min-height: 930px; }
+  .battery-card .series-copy h2 { font-size: 29px; line-height: 35px; }
+}

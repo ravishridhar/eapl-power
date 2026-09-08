@@ -7,6 +7,7 @@ const listingSizeButton = document.querySelector('.listing-hero .btn');
 if (listingSizeButton) listingSizeButton.textContent = 'Size My Interter';
 
 if (document.body.classList.contains('listing-page')) {
+  const isBatteryPage = window.location.pathname.includes('inverter-batteries');
   const desktopMenus = [
     ['Inverter Batteries', ['Tall Tubular Batteries', 'Short Tubular Batteries', 'Solar Batteries']],
     ['LithTec Combo', ['LithTec Home UPS', 'Lithium Batteries', 'Complete Combo Systems']],
@@ -25,8 +26,8 @@ if (document.body.classList.contains('listing-page')) {
 
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileProducts = [
-    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], ['./', '#sino', '#electro']],
-    ['Inverter Batteries', ['Tall Tubular Batteries', 'Short Tubular Batteries', 'Solar Batteries'], ['../#range', '../#range', '../#range']],
+    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], [isBatteryPage ? '../home-inverters/' : './', isBatteryPage ? '../home-inverters/#sino' : '#sino', isBatteryPage ? '../home-inverters/#electro' : '#electro']],
+    ['Inverter Batteries', ['Regular Series', 'Smart Series', 'CitiMax Series'], [isBatteryPage ? '#regular' : '../inverter-batteries/', isBatteryPage ? '#smart' : '../inverter-batteries/#smart', isBatteryPage ? '#citimax' : '../inverter-batteries/#citimax']],
     ['LithTec Combo', ['LithTec Home UPS', 'Lithium Batteries', 'Complete Combo Systems'], ['../#range', '../#range', '../#range']],
   ];
 
