@@ -1,0 +1,56 @@
+.listing-page { background: #f2f2f5; }
+.listing-page .nav-trigger[class*="text-yellow"] img { content: url('../images/chevron-active.svg'); }
+.listing-hero { position: relative; height: 540px; padding-top: 0 !important; color: white; background: #0e3670 url('../images/inverters-hero.png') center/cover no-repeat; overflow: hidden; }
+.listing-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(10,46,99,.62),rgba(10,46,99,.25) 42%,transparent 68%),linear-gradient(0deg,rgba(10,46,99,.55),transparent 32%); }
+.listing-hero-content { position: relative; z-index: 1; padding-top: 108px; }
+.listing-hero-content > div:last-child { margin-top: 75px; }
+.listing-page .nav-glass > .wrap > a:first-child img,
+.listing-page .mobile-sidebar > div:first-child img,
+.listing-page footer .wrap.grid > div:first-child > img { content: url('../images/logo-solar.png'); }
+.listing-hero h1::after { content: ""; display: inline-block; width: 17px; height: 17px; margin-left: 8px; border-radius: 50%; background: #ffc727; }
+.listing-hero h1 + p + div { margin-top: 40px; }
+.listing-hero .btn, .listing-hero .btn + a { display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 30px; font-size: 14px; line-height: 12px; }
+.listing-eyebrow { display: flex; align-items: center; gap: 12px; color: #ffc727; font-size: 12px; font-weight: 700; letter-spacing: 2.64px; text-transform: uppercase; }
+.listing-eyebrow::before { content: ""; width: 28px; height: 1px; background: #ffc727; }
+.listing-grid { padding: 80px 0; }
+.series-card { position: relative; display: grid; grid-template-columns: 470px 470px; justify-content: space-between; align-items: center; min-height: 552px; margin-bottom: 80px; padding: 50px 100px; border-radius: 30px; background: white; box-shadow: 0 0 25px 3px rgba(0,0,0,.03); overflow: hidden; }
+.series-number { position: absolute; top: 35px; right: 700px; color: #f8f8f8; font-size: 140px; line-height: 110px; font-weight: 900; letter-spacing: 1.4px; }
+.series-copy { position: relative; z-index: 1; }
+.series-copy h2 { color: #0a2e63; font-size: 36px; line-height: 40px; font-weight: 900; letter-spacing: -.42px; }
+.series-subtitle { margin-top: 16px; color: #db5b13; font-size: 14px; line-height: 20px; font-weight: 700; }
+.series-description { margin-top: 13px; color: #4c5a72; font-size: 15px; line-height: 22px; }
+.series-features { margin-top: 9px; }
+.series-features li { display: flex; align-items: flex-start; gap: 13px; padding: 12px 0; border-bottom: 1px solid #d9e1ea; color: #4c5a72; font-size: 13px; line-height: 18px; font-weight: 700; }
+.series-features img { width: 16px; height: 16px; flex: none; }
+.series-button { margin-top: 18px; }
+.series-visual { position: relative; z-index: 1; display: grid; place-items: center; width: 470px; height: 366px; border: 1px solid #d9e1ea; border-radius: 20px; background: #d9d9d9; overflow: hidden; }
+.series-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 1023px) {
+  .listing-hero { height: 740px; background-image: url('../images/inverters-hero-mobile.png'); background-position: center bottom; }
+  .listing-hero::after { background: linear-gradient(180deg,rgba(10,46,99,.92) 11%,rgba(10,46,99,.9) 56%,rgba(10,46,99,0) 74%),linear-gradient(0deg,rgba(10,46,99,.85),transparent 20%); }
+  .listing-hero-content { padding-top: 92px; }
+  .listing-hero-content > div:last-child { margin-top: 38px; }
+  .listing-hero h1 { margin-top: 22px; width: 235px; font-size: 44px; line-height: 46px; }
+  .listing-hero h1::after { width: 10px; height: 10px; margin-left: 5px; }
+  .listing-hero h1 + p { margin-top: 25px; font-size: 15px; line-height: 24px; }
+  .listing-hero h1 + p + div { margin-top: 28px; gap: 14px; }
+  .listing-hero .btn, .listing-hero .btn + a { height: 36px; padding: 0 20px; font-size: 14px; }
+  .listing-grid { padding: 40px 15px; }
+  .series-card { display: flex; flex-direction: column; align-items: stretch; gap: 40px; width: 330px; min-height: 892px; margin-bottom: 40px; padding: 40px 20px; border-radius: 12px; }
+  .series-card:first-child { min-height: 944px; }
+  .series-number { top: 19px; right: 20px; font-size: 80px; line-height: 110px; letter-spacing: .8px; }
+  .series-copy { width: 290px; }
+  .series-copy h2 { font-size: 30px; line-height: 30px; }
+  .series-card:first-child .series-copy h2 { font-size: 36px; }
+  .series-subtitle { margin-top: 22px; font-size: 14px; line-height: 20px; }
+  .series-description { margin-top: 22px; font-size: 15px; line-height: 22px; }
+  .series-features { margin-top: 8px; }
+  .series-features li { padding: 14px 0; }
+  .series-button { margin-top: 22px; }
+  .series-visual { order: 2; width: 290px; height: 226px; aspect-ratio: auto; border-radius: 20px; }
+}
+
+@media (min-width: 1024px) {
+  .listing-hero h1 { width: max-content; max-width: none; white-space: nowrap; font-size: 64px; line-height: 76px; letter-spacing: -.42px; }
+}
