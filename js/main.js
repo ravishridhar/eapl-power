@@ -8,9 +8,12 @@ if (listingSizeButton) listingSizeButton.textContent = 'Size My Interter';
 
 if (document.body.classList.contains('listing-page')) {
   const isBatteryPage = window.location.pathname.includes('inverter-batteries');
+  const isLithtecPage = window.location.pathname.includes('lithtec-combo');
+  const isHomeInverterPage = window.location.pathname.includes('home-inverters');
   const desktopMenus = [
-    ['Inverter Batteries', ['Tall Tubular Batteries', 'Short Tubular Batteries', 'Solar Batteries']],
-    ['LithTec Combo', ['LithTec Home UPS', 'Lithium Batteries', 'Complete Combo Systems']],
+    ['Home Inverters', ['Sino Series', 'Electro Series', 'Omega Series'], [isHomeInverterPage ? '#sino' : '../home-inverters/#sino', isHomeInverterPage ? '#electro' : '../home-inverters/#electro', isHomeInverterPage ? '#omega' : '../home-inverters/#omega']],
+    ['Inverter Batteries', ['Regular Series', 'Smart Series', 'CitiMax Series'], [isBatteryPage ? '#regular' : '../inverter-batteries/#regular', isBatteryPage ? '#smart' : '../inverter-batteries/#smart', isBatteryPage ? '#citimax' : '../inverter-batteries/#citimax']],
+    ['LithTec Combo', ['Lithium Battery', 'Complete Combo', 'Sine Wave Home UPS', 'Square Wave Home UPS'], [isLithtecPage ? '#lithium-battery' : '../lithtec-combo/#lithium-battery', isLithtecPage ? '#complete-combo' : '../lithtec-combo/#complete-combo', isLithtecPage ? '#sine-wave' : '../lithtec-combo/#sine-wave', isLithtecPage ? 'square-wave-home-ups/' : '../lithtec-combo/square-wave-home-ups/']],
   ];
 
   document.querySelectorAll('.nav-glass .nav-item').forEach((item) => {
@@ -20,15 +23,15 @@ if (document.body.classList.contains('listing-page')) {
     if (!menu) return;
     const dropdown = document.createElement('div');
     dropdown.className = 'nav-dropdown';
-    dropdown.innerHTML = menu[1].map((entry) => `<a href="../#range">${entry}</a>`).join('');
+    dropdown.innerHTML = menu[1].map((entry, index) => `<a href="${menu[2][index]}">${entry}</a>`).join('');
     item.append(dropdown);
   });
 
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileProducts = [
-    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], [isBatteryPage ? '../home-inverters/' : './', isBatteryPage ? '../home-inverters/#sino' : '#sino', isBatteryPage ? '../home-inverters/#electro' : '#electro']],
+    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], [isHomeInverterPage ? './' : '../home-inverters/', isHomeInverterPage ? '#sino' : '../home-inverters/#sino', isHomeInverterPage ? '#electro' : '../home-inverters/#electro']],
     ['Inverter Batteries', ['Regular Series', 'Smart Series', 'CitiMax Series'], [isBatteryPage ? '#regular' : '../inverter-batteries/', isBatteryPage ? '#smart' : '../inverter-batteries/#smart', isBatteryPage ? '#citimax' : '../inverter-batteries/#citimax']],
-    ['LithTec Combo', ['LithTec Home UPS', 'Lithium Batteries', 'Complete Combo Systems'], ['../#range', '../#range', '../#range']],
+    ['LithTec Combo', ['Lithium Battery', 'Complete Combo', 'Sine Wave Home UPS', 'Square Wave Home UPS'], [isLithtecPage ? '#lithium-battery' : '../lithtec-combo/', isLithtecPage ? '#complete-combo' : '../lithtec-combo/#complete-combo', isLithtecPage ? '#sine-wave' : '../lithtec-combo/#sine-wave', isLithtecPage ? 'square-wave-home-ups/' : '../lithtec-combo/square-wave-home-ups/']],
   ];
 
   mobileProducts.forEach(([label, entries, links]) => {
@@ -41,6 +44,17 @@ if (document.body.classList.contains('listing-page')) {
   });
 }
 
+if (document.body.classList.contains('product-detail-page')) {
+  const mobileNav = document.querySelector('.mobile-nav');
+  const sourceLink = [...mobileNav.children].find((child) => child.tagName === 'A' && child.textContent.trim() === 'LithTec Combo');
+  if (sourceLink) {
+    const group = document.createElement('div');
+    group.className = 'mobile-nav-group';
+    group.innerHTML = '<button class="mobile-nav-trigger">LithTec Combo<img src="../../images/chevron.svg" alt=""></button><div class="mobile-submenu"><a href="../#lithium-battery">Lithium Battery</a><a href="../#complete-combo">Complete Combo</a><a href="../#sine-wave">Sine Wave Home UPS</a><a href="./">Square Wave Home UPS</a></div>';
+    sourceLink.replaceWith(group);
+  }
+}
+
 const formatCount = (value) => String(value).padStart(2, '0');
 
 const heroSlides = document.querySelectorAll('.hero-swiper .swiper-slide');
@@ -48,7 +62,8 @@ heroSlides.forEach((slide, index) => {
   if (index > 0) slide.innerHTML = heroSlides[0].innerHTML;
 });
 
-const heroSwiper = new Swiper('.hero-swiper', {
+const heroElement = document.querySelector('.hero-swiper');
+if (heroElement && typeof Swiper !== 'undefined') new Swiper(heroElement, {
   loop: true,
   speed: 700,
   autoplay: { delay: 5000, disableOnInteraction: false },
@@ -62,7 +77,7 @@ const heroSwiper = new Swiper('.hero-swiper', {
 });
 
 const rangeProducts = document.querySelector('.range-products');
-if (rangeProducts) {
+if (rangeProducts && typeof Swiper !== 'undefined') {
   const cards = [...rangeProducts.children];
   const fifthCard = cards[0].cloneNode(true);
   rangeProducts.classList.add('swiper');
@@ -111,6 +126,22 @@ document.querySelectorAll('.mobile-nav-trigger').forEach((trigger) => {
     group.classList.toggle('is-open');
   });
 });
+
+const benefitTrack = document.querySelector('.benefit-grid');
+if (benefitTrack) {
+  const benefitDots = [...document.querySelectorAll('.benefit-pagination i')];
+  const benefitCurrent = document.querySelector('.benefit-count strong');
+  const updateBenefits = () => {
+    const step = benefitTrack.querySelector('article').offsetWidth + parseFloat(getComputedStyle(benefitTrack).gap || 0);
+    const index = Math.min(benefitDots.length - 1, Math.round(benefitTrack.scrollLeft / step));
+    benefitCurrent.textContent = formatCount(index + 1);
+    benefitDots.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === index));
+  };
+  document.querySelector('.benefit-prev')?.addEventListener('click', () => benefitTrack.scrollBy({ left: -(benefitTrack.querySelector('article').offsetWidth + 30), behavior: 'smooth' }));
+  document.querySelector('.benefit-next')?.addEventListener('click', () => benefitTrack.scrollBy({ left: benefitTrack.querySelector('article').offsetWidth + 30, behavior: 'smooth' }));
+  benefitDots.forEach((dot, index) => dot.addEventListener('click', () => benefitTrack.scrollTo({ left: index * (benefitTrack.querySelector('article').offsetWidth + 30), behavior: 'smooth' })));
+  benefitTrack.addEventListener('scroll', updateBenefits, { passive: true });
+}
 
 mobileMenu?.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => setMobileMenu(false));

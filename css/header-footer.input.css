@@ -58,6 +58,7 @@ body.menu-open { overflow: hidden; }
 
 @media (max-width: 1023px) {
   .desktop-only { display: none !important; }
+  #menuButton { position: relative; z-index: 2; display: block; flex: 0 0 30px; margin-left: auto; }
   .top-strip { height: 44px; }
   .nav-glass { height: 72px; }
   .nav-glass > .wrap { width: 100%; padding-inline: 15px; }
@@ -66,6 +67,7 @@ body.menu-open { overflow: hidden; }
 }
 
 @media (min-width: 1024px) {
+  #menuButton { display: none; }
   .mobile-overlay, .mobile-sidebar { display: none; }
   .nav-glass > .wrap { width: 100%; max-width: none; padding-left: 85px; padding-right: 48px; justify-content: flex-start; }
   .nav-glass > .wrap > nav { margin-left: 281px; }

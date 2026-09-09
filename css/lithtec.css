@@ -1,0 +1,24 @@
+.lithtec-hero { background-image: url('../images/lithtec-hero.png'); background-position: center 45%; }
+.lithtec-hero::after { background: linear-gradient(90deg,rgba(10,46,99,.6) 0%,rgba(10,46,99,.28) 36%,rgba(10,46,99,0) 60%),linear-gradient(180deg,rgba(10,46,99,0) 84%,rgba(10,46,99,.85) 100%); }
+.lithtec-tagline { margin-top: 48px; color: #fff; font-size: 24px; line-height: 28px; font-weight: 800; font-style: italic; }
+.lithtec-tagline span { color: #db5b13; }
+.lithtec-card { min-height: 619px; }
+.lithtec-card:first-child { min-height: 564px; }
+.lithtec-card:nth-child(2) { min-height: 608px; }
+.lithtec-card .series-copy { align-self: start; }
+.lithtec-card .series-copy h2 { line-height: 44px; }
+.lithtec-card .series-visual img { object-fit: cover; }
+
+@media (min-width: 1024px) {
+  .lithtec-hero h1 { font-size: 72px; }
+  .lithtec-card { padding-top: 61px; padding-bottom: 61px; }
+  .lithtec-card:first-child, .lithtec-card:nth-child(2) { padding-top: 50px; padding-bottom: 50px; }
+}
+
+@media (max-width: 1023px) {
+  .lithtec-hero { background-position: 59% center; }
+  .lithtec-hero h1 { width: 300px; white-space: normal; font-size: 42px; line-height: 46px; }
+  .lithtec-tagline { margin-top: 34px; font-size: 20px; }
+  .lithtec-card, .lithtec-card:first-child, .lithtec-card:nth-child(2) { min-height: 930px; }
+  .lithtec-card .series-copy h2 { font-size: 28px; line-height: 34px; }
+}
