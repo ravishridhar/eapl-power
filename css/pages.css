@@ -12,3 +12,7 @@
 .pages-grid strong { font-size: 18px; }
 .pages-grid em { margin-top: 7px; color: #9eb0c9; font-size: 11px; font-style: normal; text-transform: uppercase; letter-spacing: 1.2px; }
 @media(max-width:640px){.pages-index main{padding-top:35px}.pages-index .eyebrow{margin-top:45px}.pages-index h1{letter-spacing:-2px}.pages-grid{grid-template-columns:1fr;margin-top:38px}.pages-grid a{min-height:112px}}
+
+.pages-grid .page-path { margin-top: 12px; color: #b8c6d9; font-size: 12px; overflow-wrap: anywhere; }
+.pages-grid a:focus-visible, .pages-logo:focus-visible { outline: 3px solid #ffc727; outline-offset: 5px; }
+@media (prefers-reduced-motion: reduce) { .pages-grid a { transition: none; } .pages-grid a:hover { transform: none; } }
