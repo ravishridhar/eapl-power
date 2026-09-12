@@ -11,7 +11,7 @@ if (document.body.classList.contains('listing-page')) {
   const isLithtecPage = window.location.pathname.includes('lithtec-combo');
   const isHomeInverterPage = window.location.pathname.includes('home-inverters');
   const desktopMenus = [
-    ['Home Inverters', ['Sino Series', 'Electro Series', 'Omega Series'], [isHomeInverterPage ? '#sino' : '../home-inverters/#sino', isHomeInverterPage ? '#electro' : '../home-inverters/#electro', isHomeInverterPage ? '#omega' : '../home-inverters/#omega']],
+    ['Home Inverters', ['Sino Series', 'Electro Series', 'Omega Series'], [isHomeInverterPage ? 'sino-series/' : '../home-inverters/sino-series/', isHomeInverterPage ? '#electro' : '../home-inverters/#electro', isHomeInverterPage ? '#omega' : '../home-inverters/#omega']],
     ['Inverter Batteries', ['Regular Series', 'Smart Series', 'CitiMax Series'], [isBatteryPage ? '#regular' : '../inverter-batteries/#regular', isBatteryPage ? '#smart' : '../inverter-batteries/#smart', isBatteryPage ? '#citimax' : '../inverter-batteries/#citimax']],
     ['LithTec Combo', ['Lithium Battery', 'Complete Combo', 'Sine Wave Home UPS', 'Square Wave Home UPS'], [isLithtecPage ? '#lithium-battery' : '../lithtec-combo/#lithium-battery', isLithtecPage ? '#complete-combo' : '../lithtec-combo/#complete-combo', isLithtecPage ? '#sine-wave' : '../lithtec-combo/#sine-wave', isLithtecPage ? 'square-wave-home-ups/' : '../lithtec-combo/square-wave-home-ups/']],
   ];
@@ -29,7 +29,7 @@ if (document.body.classList.contains('listing-page')) {
 
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileProducts = [
-    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], [isHomeInverterPage ? './' : '../home-inverters/', isHomeInverterPage ? '#sino' : '../home-inverters/#sino', isHomeInverterPage ? '#electro' : '../home-inverters/#electro']],
+    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], [isHomeInverterPage ? './' : '../home-inverters/', isHomeInverterPage ? 'sino-series/' : '../home-inverters/sino-series/', isHomeInverterPage ? '#electro' : '../home-inverters/#electro']],
     ['Inverter Batteries', ['Regular Series', 'Smart Series', 'CitiMax Series'], [isBatteryPage ? '#regular' : '../inverter-batteries/', isBatteryPage ? '#smart' : '../inverter-batteries/#smart', isBatteryPage ? '#citimax' : '../inverter-batteries/#citimax']],
     ['LithTec Combo', ['Lithium Battery', 'Complete Combo', 'Sine Wave Home UPS', 'Square Wave Home UPS'], [isLithtecPage ? '#lithium-battery' : '../lithtec-combo/', isLithtecPage ? '#complete-combo' : '../lithtec-combo/#complete-combo', isLithtecPage ? '#sine-wave' : '../lithtec-combo/#sine-wave', isLithtecPage ? 'square-wave-home-ups/' : '../lithtec-combo/square-wave-home-ups/']],
   ];
@@ -44,7 +44,7 @@ if (document.body.classList.contains('listing-page')) {
   });
 }
 
-if (document.body.classList.contains('product-detail-page')) {
+if (document.body.classList.contains('product-detail-page') && !document.body.classList.contains('sino-page')) {
   const mobileNav = document.querySelector('.mobile-nav');
   const sourceLink = [...mobileNav.children].find((child) => child.tagName === 'A' && child.textContent.trim() === 'LithTec Combo');
   if (sourceLink) {
@@ -128,7 +128,7 @@ document.querySelectorAll('.mobile-nav-trigger').forEach((trigger) => {
 });
 
 const benefitTrack = document.querySelector('.benefit-grid');
-if (benefitTrack) {
+if (benefitTrack && !document.body.classList.contains('sino-page')) {
   const benefitDots = [...document.querySelectorAll('.benefit-pagination i')];
   const benefitCurrent = document.querySelector('.benefit-count strong');
   const updateBenefits = () => {
