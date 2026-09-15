@@ -50,7 +50,7 @@
 .mobile-nav-group.is-open .mobile-nav-trigger { color: #ffc727; }
 .mobile-nav-group.is-open .mobile-nav-trigger img { transform: rotate(180deg); }
 .mobile-submenu { max-height: 0; overflow: hidden; background: rgba(5,13,26,.2); transition: max-height .28s ease; }
-.mobile-nav-group.is-open .mobile-submenu { max-height: 180px; }
+.mobile-nav-group.is-open .mobile-submenu { max-height: 420px; }
 .mobile-submenu a { display: block; padding: 11px 16px; color: #c2cad5; font-size: 12px; }
 .mobile-submenu a:first-child { padding-top: 15px; }
 .mobile-submenu a:last-child { padding-bottom: 15px; }
@@ -75,3 +75,61 @@ body.menu-open { overflow: hidden; }
   .nav-glass > .wrap > nav { margin-left: 281px; }
   .nav-glass > .wrap > .btn { margin-left: auto; padding: 14px 24px; background: #ffd60a; }
 }
+
+/* One shared header: logo on the left, two navigation rows on the right. */
+body .merged-header.nav-glass { height: 142px; }
+body .merged-header .top-strip { height: 64px; background: transparent; }
+body .merged-header .top-strip > .wrap { height: 100%; justify-content: flex-end; }
+body .merged-header .top-strip .desktop-only { gap: 30px; }
+body .merged-header .top-strip .opacity-30 { display: none; }
+body .merged-header > .wrap { position: static; height: 78px; }
+@media (min-width: 1024px) {
+  body .merged-header .top-strip > .wrap,
+  body .merged-header > .wrap { width: calc(100% - 100px); max-width: 1270px; margin-inline: auto; padding: 0; }
+  body .merged-header .top-strip > .wrap { padding-left: 260px; }
+  body .merged-header .top-strip .desktop-only { width: 100%; height: 100%; justify-content: flex-end; border-bottom: 1px solid rgba(255,255,255,.3); }
+  body .merged-header > .wrap > a:first-child { position: absolute; top: 14px; left: max(50px, calc((100% - 1270px) / 2)); }
+  body .merged-header > .wrap > a:first-child img { width: 200px; height: 110px; object-fit: contain; }
+  body .merged-header > .wrap { padding-left: 260px; gap: 30px; justify-content: flex-end; }
+  body .merged-header > .wrap > nav { margin-left: auto; gap: 30px; }
+  body .merged-header > .wrap > .btn { margin-left: 0; }
+  body .merged-header .nav-item { padding-block: 28px; }
+}
+@media (max-width: 1023px) {
+  body .merged-header.nav-glass { height: 116px; }
+  body .merged-header .top-strip { height: 44px; }
+  body .merged-header .top-strip > .wrap { width: calc(100% - 30px); border-bottom: 1px solid rgba(255,255,255,.25); }
+  body .merged-header > .wrap { height: 72px; padding-inline: 15px; }
+  body .merged-header > .wrap > a:first-child img { width: 110px; height: 60px; }
+  body .merged-header > .wrap > .btn { display: inline-flex !important; margin-left: auto; padding: 10px 12px; font-size: 10px; }
+  body .merged-header #menuButton { order: 1; margin-left: 15px; }
+  body .merged-header .top-strip > .wrap { padding-right: 0; }
+}
+
+body .merged-header.nav-glass { transition: height .3s ease, margin-bottom .3s ease; }
+body .merged-header .top-strip { transition: height .3s ease, opacity .2s ease, visibility .2s ease; }
+body .merged-header > .wrap { transition: height .3s ease; }
+body .merged-header > .wrap > a:first-child { transition: top .3s ease; }
+body .merged-header > .wrap > a:first-child img { transition: width .3s ease, height .3s ease; }
+body .merged-header.is-compact .top-strip { height: 0; opacity: 0; visibility: hidden; overflow: hidden; pointer-events: none; }
+@media (min-width: 1024px) {
+  body .merged-header.is-compact.nav-glass { height: 72px; margin-bottom: 70px; }
+  body .merged-header.is-compact > .wrap { height: 72px; }
+  body .merged-header.is-compact > .wrap > a:first-child { top: 6px; }
+  body .merged-header.is-compact > .wrap > a:first-child img { width: 110px; height: 60px; }
+}
+@media (max-width: 1023px) {
+  body .merged-header.is-compact.nav-glass { height: 64px; margin-bottom: 52px; }
+  body .merged-header.is-compact > .wrap { height: 64px; }
+  body .merged-header.is-compact > .wrap > a:first-child img { width: 88px; height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body .merged-header.nav-glass,
+  body .merged-header .top-strip,
+  body .merged-header > .wrap,
+  body .merged-header > .wrap > a:first-child,
+  body .merged-header > .wrap > a:first-child img { transition: none; }
+}
+
+.mobile-submenu a { scroll-margin-top: 80px; }
+.listing-grid .series-card { scroll-margin-top: 90px; }
