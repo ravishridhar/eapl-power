@@ -6,7 +6,7 @@
 .electro-page .summary-stat p { font-size: 20px; margin-top: 20px; }
 .electro-page .summary-stat strong { font-size: 20px; line-height: 32px; margin-top: 20px; }
 .electro-page .sino-feature-icon img[src$="electro-peak.svg"] { width: 36px; height: 28px; }
-.electro-page .detail-faq { min-height: 915px; }
+.electro-page .detail-faq { min-height: auto; }
 .electro-page .fit-grid picture { display: block; flex-shrink: 0; }
 .electro-page .detail-faq p a { color: #db5b13; text-decoration: underline; }
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -25,8 +25,8 @@
  .electro-page .summary-stat p { font-size: 18px; margin-top: 21px; }
  .electro-page .summary-stat strong { font-size: 20px; line-height: 28px; margin-top: 10px; }
  .electro-page .group-title strong { font-size: 20px; }
- .electro-page .benefit-grid { gap: 20px; margin-top: 30px; }
- .electro-page .benefit-controls { margin-top: 30px; grid-template-columns: 64px 1fr 74px; gap: 10px; }
+ .electro-page .benefit-grid { gap: 20px; margin-top: 16.8px; }
+ .electro-page .benefit-controls { margin-top: 16.8px; grid-template-columns: 64px 1fr 74px; gap: 10px; }
  .electro-page .benefit-pagination { display: flex; justify-content: center; gap: 6px; }
  .electro-page .benefit-pagination button { width: 20px; }
  .electro-page .benefit-arrows { gap: 6px; }

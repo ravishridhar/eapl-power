@@ -79,18 +79,17 @@ if (heroElement && typeof Swiper !== 'undefined') new Swiper(heroElement, {
 const rangeProducts = document.querySelector('.range-products');
 if (rangeProducts && typeof Swiper !== 'undefined') {
   const cards = [...rangeProducts.children];
-  const fifthCard = cards[0].cloneNode(true);
   rangeProducts.classList.add('swiper');
   const wrapper = document.createElement('div');
   wrapper.className = 'swiper-wrapper';
-  [...cards, fifthCard].forEach((card) => {
+  cards.forEach((card) => {
     card.classList.add('swiper-slide');
     wrapper.append(card);
   });
   rangeProducts.append(wrapper);
 
   new Swiper(rangeProducts, {
-    loop: true,
+    loop: false,
     speed: 550,
     spaceBetween: 25,
     slidesPerView: 'auto',
