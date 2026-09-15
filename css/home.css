@@ -20,6 +20,7 @@
 .hero-controls .circle-arrow { border-color: rgba(255,255,255,.35); }
 .swiper-button-disabled { opacity: .4; }
 #range h2 { letter-spacing: -.42px; }
+#enquiryForm .field { font-weight: 400; letter-spacing: normal; text-transform: none; }
 
 @media (min-width: 901px) {
   #range h2 { max-width: 720px; white-space: nowrap; }
@@ -29,12 +30,12 @@
 @media (max-width: 1023px) {
   .hero-swiper, .hero-swiper .swiper-slide { height: 610px; }
   .hero-slide { background-position: 64% center; }
-  #range { height: 823px; padding-top: 60px; padding-bottom: 0; }
+  #range { height: auto; padding-top: 33.6px; padding-bottom: 33.6px; }
   #range > .wrap { width: 100%; }
   #range > .wrap > div:first-child { width: min(330px, calc(100% - 30px)); margin-inline: auto; }
   #range h2 { margin-top: 20px; font-size: 28px; line-height: 34px; letter-spacing: -.42px; }
   #range h2 + p { margin-top: 20px; width: 330px; max-width: 100%; font-size: 14px; line-height: 24px; }
-  .range-products { margin-top: 34px; padding: 8px 20px 29px; }
+  .range-products { margin-top: 19.04px; padding: 8px 20px 29px; }
   .range-products .swiper-slide { width: 300px; }
   .product-card { height: 421.765px; }
   .product-card::before { top: 14px; left: 14px; padding: 5.294px 9.706px; }

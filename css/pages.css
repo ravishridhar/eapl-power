@@ -1,11 +1,11 @@
 .pages-index { min-height: 100vh; color: #fff; background: radial-gradient(circle at 80% 15%,#174e91 0,transparent 32%),#071d3b; }
-.pages-index main { padding: 64px 20px 90px; }
+.pages-index main { padding: 35.84px 20px 50.4px; }
 .pages-wrap { width: min(1080px,100%); margin: auto; }
 .pages-logo img { width: 125px; height: 68px; object-fit: contain; object-position: left; }
 .pages-index .eyebrow { margin-top: 70px; color: #ffc727; }
 .pages-index h1 { margin: 18px 0 12px; font-size: clamp(38px,6vw,72px); font-weight: 800; line-height: 1; letter-spacing: -3px; }
 .pages-intro { margin: 0; color: #b8c6d9; font-size: 14px; }
-.pages-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 55px; }
+.pages-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 30.8px; }
 .pages-grid a { position: relative; display: flex; min-height: 132px; flex-direction: column; justify-content: center; padding: 26px 30px 26px 86px; overflow: hidden; border: 1px solid rgba(255,255,255,.13); border-radius: 8px; background: rgba(255,255,255,.055); transition: .25s ease; }
 .pages-grid a:hover { border-color: #ffc727; background: rgba(255,255,255,.1); transform: translateY(-3px); }
 .pages-grid span { position: absolute; left: 24px; color: #ffc727; font-size: 13px; font-weight: 800; }

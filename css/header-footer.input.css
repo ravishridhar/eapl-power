@@ -60,6 +60,8 @@ body.menu-open { overflow: hidden; }
   .desktop-only { display: none !important; }
   #menuButton { position: relative; z-index: 2; display: block; flex: 0 0 30px; margin-left: auto; }
   .top-strip { height: 44px; }
+  .top-strip .desktop-only { display: flex !important; }
+  .top-strip .desktop-only > :not(a[href$="#contact"]) { display: none; }
   .nav-glass { height: 72px; }
   .nav-glass > .wrap { width: 100%; padding-inline: 15px; }
   .nav-glass > .wrap > a:first-child img { width: 91px; height: 48px; }
