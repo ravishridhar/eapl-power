@@ -7,6 +7,7 @@
   "scripts": {
   "build": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --minify",
   "dev": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --watch",
+  "serve": "vite",
   "deploy": "npm run build && gh-pages -d ."
 },
 
