@@ -57,11 +57,6 @@ if (document.body.classList.contains('product-detail-page') && !document.body.cl
 
 const formatCount = (value) => String(value).padStart(2, '0');
 
-const heroSlides = document.querySelectorAll('.hero-swiper .swiper-slide');
-heroSlides.forEach((slide, index) => {
-  if (index > 0) slide.innerHTML = heroSlides[0].innerHTML;
-});
-
 const heroElement = document.querySelector('.hero-swiper');
 if (heroElement && typeof Swiper !== 'undefined') new Swiper(heroElement, {
   loop: true,

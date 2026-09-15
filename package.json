@@ -5,13 +5,11 @@
   "main": "js/main.js",
 
   "scripts": {
-    "dev": "vite",
-    "tailwind": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --watch",
-    "build:css": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --minify",
-    "build": "npm run build:css && vite build",
-    "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
-  },
+  "build": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --minify",
+  "dev": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --watch",
+  "serve": "vite",
+  "deploy": "npm run build && gh-pages -d ."
+},
 
   "keywords": [],
   "author": "",

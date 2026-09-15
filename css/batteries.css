@@ -1,5 +1,5 @@
 .battery-hero {
-  background-image: url('../images/batteries-hero.png');
+  background-image: url('../images/header/Inverter%20Batteries.png');
   background-position: center 43%;
 }
 .battery-hero::after {
@@ -22,7 +22,7 @@
 
 @media (max-width: 1023px) {
   .battery-hero::after { background: linear-gradient(90deg,rgba(10,46,99,.94) 0%,rgba(10,46,99,.88) 65%,rgba(10,46,99,.65) 100%),linear-gradient(0deg,rgba(10,46,99,.85),transparent 35%); }
-  .battery-hero { background-position: 61% center; }
+  .battery-hero { background-image: url('../images/header/mobile/3-wo.png'); background-position: center; }
   .battery-hero h1 { width: min(300px,100%); white-space: normal; font-size: 42px; line-height: 46px; }
   .battery-tagline { margin-top: 34px; font-size: 20px; }
   .battery-card, .battery-card:first-child { min-height: 930px; }
