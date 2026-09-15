@@ -6,53 +6,54 @@ const menuClose = document.querySelector('#menuClose');
 const listingSizeButton = document.querySelector('.listing-hero .btn');
 if (listingSizeButton) listingSizeButton.textContent = 'Size My Interter';
 
-if (document.body.classList.contains('listing-page')) {
-  const isBatteryPage = window.location.pathname.includes('inverter-batteries');
-  const isLithtecPage = window.location.pathname.includes('lithtec-combo');
-  const isHomeInverterPage = window.location.pathname.includes('home-inverters');
-  const desktopMenus = [
-    ['Home Inverters', ['Sino Series', 'Electro Series', 'Omega Series'], [isHomeInverterPage ? 'sino-series/' : '../home-inverters/sino-series/', isHomeInverterPage ? '#electro' : '../home-inverters/#electro', isHomeInverterPage ? '#omega' : '../home-inverters/#omega']],
-    ['Inverter Batteries', ['Regular Series', 'Smart Series', 'CitiMax Series'], [isBatteryPage ? '#regular' : '../inverter-batteries/#regular', isBatteryPage ? '#smart' : '../inverter-batteries/#smart', isBatteryPage ? '#citimax' : '../inverter-batteries/#citimax']],
-    ['LithTec Combo', ['Lithium Battery', 'Complete Combo', 'Sine Wave Home UPS', 'Square Wave Home UPS'], [isLithtecPage ? '#lithium-battery' : '../lithtec-combo/#lithium-battery', isLithtecPage ? '#complete-combo' : '../lithtec-combo/#complete-combo', isLithtecPage ? '#sine-wave' : '../lithtec-combo/#sine-wave', isLithtecPage ? 'square-wave-home-ups/' : '../lithtec-combo/square-wave-home-ups/']],
-  ];
-
-  document.querySelectorAll('.nav-glass .nav-item').forEach((item) => {
-    if (item.querySelector('.nav-dropdown')) return;
-    const label = item.querySelector('.nav-trigger')?.textContent.trim();
-    const menu = desktopMenus.find(([name]) => name === label);
-    if (!menu) return;
-    const dropdown = document.createElement('div');
-    dropdown.className = 'nav-dropdown';
-    dropdown.innerHTML = menu[1].map((entry, index) => `<a href="${menu[2][index]}">${entry}</a>`).join('');
-    item.append(dropdown);
-  });
-
-  const mobileNav = document.querySelector('.mobile-nav');
-  const mobileProducts = [
-    ['Home Inverters', ['View All Home Inverters', 'Sino Series', 'Electro Series'], [isHomeInverterPage ? './' : '../home-inverters/', isHomeInverterPage ? 'sino-series/' : '../home-inverters/sino-series/', isHomeInverterPage ? '#electro' : '../home-inverters/#electro']],
-    ['Inverter Batteries', ['Regular Series', 'Smart Series', 'CitiMax Series'], [isBatteryPage ? '#regular' : '../inverter-batteries/', isBatteryPage ? '#smart' : '../inverter-batteries/#smart', isBatteryPage ? '#citimax' : '../inverter-batteries/#citimax']],
-    ['LithTec Combo', ['Lithium Battery', 'Complete Combo', 'Sine Wave Home UPS', 'Square Wave Home UPS'], [isLithtecPage ? '#lithium-battery' : '../lithtec-combo/', isLithtecPage ? '#complete-combo' : '../lithtec-combo/#complete-combo', isLithtecPage ? '#sine-wave' : '../lithtec-combo/#sine-wave', isLithtecPage ? 'square-wave-home-ups/' : '../lithtec-combo/square-wave-home-ups/']],
-  ];
-
-  mobileProducts.forEach(([label, entries, links]) => {
-    const sourceLink = [...mobileNav.children].find((child) => child.tagName === 'A' && child.textContent.trim() === label);
-    if (!sourceLink) return;
-    const group = document.createElement('div');
-    group.className = 'mobile-nav-group';
-    group.innerHTML = `<button class="mobile-nav-trigger">${label}<img src="../images/chevron.svg" alt=""></button><div class="mobile-submenu">${entries.map((entry, index) => `<a href="${links[index]}">${entry}</a>`).join('')}</div>`;
-    sourceLink.replaceWith(group);
+// Share the complete product navigation across landing and detail pages.
+const siteRoot = new URL('../', document.currentScript.src);
+const productMenus = [
+  { label: 'Home Inverters', path: 'home-inverters/', entries: [
+    ['Sino Series', 'home-inverters/sino-series/'],
+    ['Electro Series', 'home-inverters/electro-series/'],
+    ['Omega Series', 'home-inverters/omega-series/'],
+    ['Sigma Series', 'home-inverters/sigma-series/'],
+    ['SinoSpark Series', 'home-inverters/sinospark-series/'],
+    ['Wattrix Series', 'home-inverters/#wattrix'],
+  ] },
+  { label: 'Inverter Batteries', path: 'inverter-batteries/', entries: [
+    ['Regular Series', 'inverter-batteries/#regular'],
+    ['Smart Series', 'inverter-batteries/#smart'],
+    ['CitiMax Series', 'inverter-batteries/#citimax'],
+  ] },
+  { label: 'LithTec Combo', path: 'lithtec-combo/', entries: [
+    ['Home UPS + Lithium Battery', 'lithtec-combo/#complete-combo'],
+    ['Lithium Battery', 'lithtec-combo/#lithium-battery'],
+    ['Sine Wave Home UPS', 'lithtec-combo/#sine-wave'],
+    ['Square Wave Home UPS', 'lithtec-combo/square-wave-home-ups/'],
+  ] },
+];
+const menuLinks = (menu) => menu.entries
+  .map(([label, path]) => `<a href="${new URL(path, siteRoot).href}">${label}</a>`).join('');
+const desktopNav = document.querySelector('.merged-header > .wrap > nav');
+if (desktopNav) {
+  productMenus.forEach((menu) => {
+    let item = [...desktopNav.querySelectorAll('.nav-item')].find(node => node.querySelector('.nav-trigger')?.textContent.trim() === menu.label);
+    if (!item) {
+      item = document.createElement('div');
+      item.className = 'nav-item';
+      desktopNav.append(item);
+    }
+    const active = window.location.pathname.includes(`/${menu.path}`) ? ' !text-yellow' : '';
+    item.innerHTML = `<a class="nav-trigger${active}" href="${new URL(menu.path, siteRoot).href}">${menu.label}<img src="${new URL('images/chevron.svg', siteRoot).href}" alt=""></a><div class="nav-dropdown">${menuLinks(menu)}</div>`;
   });
 }
-
-if (document.body.classList.contains('product-detail-page') && !document.body.classList.contains('sino-page')) {
-  const mobileNav = document.querySelector('.mobile-nav');
-  const sourceLink = [...mobileNav.children].find((child) => child.tagName === 'A' && child.textContent.trim() === 'LithTec Combo');
-  if (sourceLink) {
+const mobileProductNav = document.querySelector('.mobile-nav');
+if (mobileProductNav) {
+  productMenus.forEach((menu, index) => {
+    const existing = [...mobileProductNav.children].find(node => (node.querySelector('.mobile-nav-trigger')?.textContent || node.textContent).trim() === menu.label);
     const group = document.createElement('div');
     group.className = 'mobile-nav-group';
-    group.innerHTML = '<button class="mobile-nav-trigger">LithTec Combo<img src="../../images/chevron.svg" alt=""></button><div class="mobile-submenu"><a href="../#lithium-battery">Lithium Battery</a><a href="../#complete-combo">Complete Combo</a><a href="../#sine-wave">Sine Wave Home UPS</a><a href="./">Square Wave Home UPS</a></div>';
-    sourceLink.replaceWith(group);
-  }
+    group.innerHTML = `<button type="button" class="mobile-nav-trigger" aria-expanded="false" aria-controls="product-menu-${index}">${menu.label}<img src="${new URL('images/chevron.svg', siteRoot).href}" alt=""></button><div id="product-menu-${index}" class="mobile-submenu">${menuLinks(menu)}</div>`;
+    if (existing) existing.replaceWith(group);
+    else mobileProductNav.append(group);
+  });
 }
 
 const formatCount = (value) => String(value).padStart(2, '0');
@@ -115,9 +116,10 @@ document.querySelectorAll('.mobile-nav-trigger').forEach((trigger) => {
   trigger.addEventListener('click', () => {
     const group = trigger.closest('.mobile-nav-group');
     document.querySelectorAll('.mobile-nav-group').forEach((item) => {
-      if (item !== group) item.classList.remove('is-open');
+      if (item !== group) { item.classList.remove('is-open'); item.querySelector('.mobile-nav-trigger')?.setAttribute('aria-expanded', 'false'); }
     });
     group.classList.toggle('is-open');
+    trigger.setAttribute('aria-expanded', String(group.classList.contains('is-open')));
   });
 });
 
@@ -152,3 +154,20 @@ document.querySelector('#enquiryForm')?.addEventListener('submit', (event) => {
   status.classList.remove('hidden');
   event.currentTarget.reset();
 });
+
+// Keep the header compact after scrolling, without shifting the page content.
+const siteHeader = document.querySelector('.merged-header');
+if (siteHeader) {
+  const topNavigation = siteHeader.querySelector('.top-strip');
+  let compactHeader = false;
+  const updateHeader = () => {
+    const nextCompact = compactHeader ? window.scrollY > 8 : window.scrollY > 80;
+    if (nextCompact === compactHeader) return;
+    compactHeader = nextCompact;
+    siteHeader.classList.toggle('is-compact', compactHeader);
+    if (topNavigation) topNavigation.inert = compactHeader;
+  };
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('pageshow', updateHeader);
+  updateHeader();
+}
