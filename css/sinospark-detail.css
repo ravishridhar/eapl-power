@@ -1,0 +1,7 @@
+/* SinoSpark Series — Figma desktop 70:3179; shared responsive detail layout. */
+.sinospark-page .detail-hero { background-image: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/sinospark-hero.png'); }
+.sinospark-page .detail-hero-copy h1 { width: 630px; max-width: 100%; }
+@media (max-width: 767px) {
+ .sinospark-page .detail-hero { background: linear-gradient(180deg,#0e3670 42%,rgba(10,46,99,.85) 55%,transparent 74%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/sinospark-hero.png') calc(50% - 184px) 352px/927px 416px no-repeat #0e3670; }
+ .sinospark-page .detail-hero-copy h1 { font-size: clamp(28px,8.88vw,32px); }
+}
