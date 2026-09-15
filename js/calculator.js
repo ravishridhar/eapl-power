@@ -23,6 +23,14 @@ Object.entries(additionalAppliances).forEach(([category, appliances]) => {
 });
 const allApplianceCards = applianceGrid.querySelectorAll('.appliance');
 const hoursInput = document.querySelector('#backupHours');
+const hoursSlider = document.createElement('span');
+hoursSlider.className = 'hours-slider';
+const hoursThumb = document.createElement('span');
+hoursThumb.className = 'hours-slider-thumb';
+hoursThumb.setAttribute('aria-hidden', 'true');
+hoursInput.before(hoursSlider);
+hoursSlider.append(hoursInput, hoursThumb);
+
 
 function updateCalculator() {
   let watts = 0;
@@ -30,6 +38,9 @@ function updateCalculator() {
     watts += Number(card.dataset.watts) * Number(card.querySelector('output').value || 0);
   });
   const hours = Number(hoursInput.value);
+  const progress = (hours - Number(hoursInput.min)) / (Number(hoursInput.max) - Number(hoursInput.min));
+  hoursSlider.style.setProperty('--thumb-position', `calc(${progress * 100}% - ${progress * 31}px)`);
+
   const va = watts ? Math.ceil((watts * 1.25) / 50) * 50 : 0;
   const wave = document.querySelector('[name="wave"]:checked').value;
   const battery = document.querySelector('[name="battery"]:checked').value;
