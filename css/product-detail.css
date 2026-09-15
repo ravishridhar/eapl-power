@@ -90,6 +90,115 @@
 .detail-faq details[open] summary::after { background-image: url('../images/faq-minus.svg'); }
 .detail-faq details p { margin: 10px 64px 16px 25px; color: #0a2e63; font-size: 14px; line-height: 20px; }
 
+/* Keep every product detail page on the Sino Series spacing rhythm. */
+@media (min-width: 1200px) {
+  .product-detail-page .product-summary {
+    min-height: 0 !important;
+    padding-top: 44.8px !important;
+    padding-bottom: 44.8px !important;
+  }
+  .product-detail-page .summary-grid h2 {
+    margin-top: 30px !important;
+    margin-bottom: 20px !important;
+  }
+  .product-detail-page .summary-grid h3 { margin-bottom: 20px !important; }
+  .product-detail-page .difference {
+    min-height: 0 !important;
+    padding-top: 44.8px !important;
+    padding-bottom: 44.8px !important;
+  }
+  .product-detail-page .group-title {
+    margin-top: 22.4px !important;
+    margin-bottom: 16.8px !important;
+  }
+  .product-detail-page .group-title.second { margin-top: 22.4px !important; }
+  .product-detail-page .benefits {
+    height: auto !important;
+    padding-top: 44.8px !important;
+    padding-bottom: 44.8px !important;
+  }
+  .product-detail-page .benefit-grid { margin-top: 22.4px !important; }
+  .product-detail-page .benefit-controls { margin-top: 22.4px !important; }
+  .product-detail-page .perfect-fit {
+    min-height: 0 !important;
+    padding-top: 44.8px !important;
+    padding-bottom: 44.8px !important;
+  }
+  .product-detail-page .perfect-fit h2 { margin-bottom: 40.32px !important; }
+  .product-detail-page .downloads {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: 44.8px !important;
+    padding-bottom: 44.8px !important;
+  }
+  .product-detail-page .download-grid { margin-top: 22.4px !important; }
+  .product-detail-page .detail-faq {
+    min-height: 0 !important;
+    padding-top: 44.8px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-detail-page .product-summary,
+  .product-detail-page .difference,
+  .product-detail-page .benefits,
+  .product-detail-page .perfect-fit,
+  .product-detail-page .downloads,
+  .product-detail-page .detail-faq {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: 22.4px !important;
+    padding-bottom: 22.4px !important;
+  }
+  .product-detail-page .summary-grid { gap: 40px !important; }
+  .product-detail-page .summary-grid h2 { margin: 20px 0 !important; }
+  .product-detail-page .summary-stat {
+    min-height: 201px !important;
+    padding: 20px !important;
+    gap: 10px !important;
+  }
+  .product-detail-page .detail-heading h2 { margin-top: 20px !important; }
+  .product-detail-page .group-title {
+    height: auto !important;
+    min-height: 95px !important;
+    gap: 20px !important;
+    margin: 22.4px 0 16.8px !important;
+    padding-bottom: 30px !important;
+  }
+  .product-detail-page .feature-grid { gap: 35px !important; }
+  .product-detail-page .feature-grid article {
+    min-height: 362px !important;
+    padding: 30px 30px 40px !important;
+  }
+  .product-detail-page .feature-grid h4 { margin-top: 30px !important; }
+  .product-detail-page .benefit-grid {
+    gap: 30px !important;
+    margin-top: 22.4px !important;
+  }
+  .product-detail-page .benefit-grid article {
+    width: 295px !important;
+    height: 244px !important;
+    flex-basis: 295px !important;
+    padding: 30px !important;
+  }
+  .product-detail-page .benefit-controls { margin-top: 22.4px !important; }
+  .product-detail-page .perfect-fit h2 { margin-bottom: 16.8px !important; }
+  .product-detail-page .fit-grid { gap: 20px !important; }
+  .product-detail-page .fit-grid article { padding: 30px 15px !important; }
+  .product-detail-page .fit-grid p { margin-top: 34px !important; }
+  .product-detail-page .download-grid {
+    gap: 20px !important;
+    margin-top: 16.8px !important;
+  }
+  .product-detail-page .download-grid a { padding: 30px 20px 25px !important; }
+  .product-detail-page .detail-faq-list { margin-top: 15px !important; }
+  .product-detail-page .detail-faq summary {
+    padding: 16px 64px 16px 25px !important;
+    line-height: 20px !important;
+  }
+}
+
 @media (max-width: 1023px) {
   .product-detail-page .detail-hero { min-height: 600px; }
   .detail-hero-inner { min-height: 600px; padding-top: 86px; }

@@ -39,8 +39,8 @@
   .listing-hero .btn, .listing-hero .btn + a { height: 36px; padding: 0 20px; font-size: 14px; }
   .listing-grid { padding: 22.4px 0; }
   .listing-grid > .wrap { width: calc(100% - 30px); }
-  .series-card { display: flex; flex-direction: column; align-items: stretch; gap: 40px; width: 100%; max-width: 330px; min-height: 892px; margin: 0 auto 22.4px; padding: 40px 20px; border-radius: 12px; }
-  .series-card:first-child { min-height: 944px; }
+  .series-card { display: flex; flex-direction: column; align-items: stretch; gap: 40px; width: 100%; max-width: 330px; height: auto; min-height: 0; margin: 0 auto 22.4px; padding: 40px 20px; border-radius: 12px; }
+  .series-card:first-child { min-height: 0; }
   .series-number { top: 19px; right: 20px; font-size: 80px; line-height: 110px; letter-spacing: .8px; }
   .series-copy { width: 100%; min-width: 0; }
   .series-copy h2 { font-size: 30px; line-height: 30px; }
