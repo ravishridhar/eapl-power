@@ -24,6 +24,6 @@
   .battery-hero { background-image: url('../images/header/mobile/3-wo.png'); background-position: center 240px; }
   .battery-hero h1 { width: min(300px,100%); white-space: normal; font-size: 42px; line-height: 46px; }
   .battery-tagline { margin-top: 34px; font-size: 20px; }
-  .battery-card, .battery-card:first-child { min-height: 930px; }
+  .battery-card, .battery-card:first-child { height: auto; min-height: 0; }
   .battery-card .series-copy h2 { font-size: 29px; line-height: 35px; }
 }
