@@ -3,17 +3,17 @@
 .hero-slide { position: relative; }
 .hero-slide > picture { position: absolute; inset: 0; }
 .hero-slide > picture > img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
-.hero-copy { position: relative; z-index: 1; padding-top: 180px; }
+.hero-copy { position: relative; z-index: 1; padding-top: 278px; }
 .hero-title { margin: 0; max-width: 760px; font-size: clamp(31.2px,3vw,43.2px); line-height: 1.24; font-weight: 900; letter-spacing: 1px; }
 .hero-promise { display: inline-block; margin-top: 30px; padding: 10px 48px; border-radius: 999px; background: #ffd60a; color: #1d3e89; font-size: 19.2px; font-weight: 600; }
-.hero-rule { width: 312px; max-width: 100%; height: 6px; margin-top: 30px; background: #ffd60a; }
+.hero-rule { width: 312px; max-width: 100%; height: 6px; margin-top: 30px; background: #f58220; }
 .hero-tagline { position: absolute; top: 540px; margin: 0; font-size: 19.2px; font-weight: 900; font-style: italic; }
 .hero-tagline span, .hero-wise-title span { color: #f58220; }
 .hero-wise-title { margin: 0; text-align: center; font-size: clamp(28.8px,3.18vw,45.6px); line-height: 1.2; font-weight: 900; font-style: italic; }
 .range-products { width: 100%; overflow: hidden !important; padding: 8px 25px 30px; }
 .range-products .swiper-slide { width: 340px; }
 .product-card { position: relative; height: 478px; border: 1px solid #d9e1ea; border-radius: 12px; box-shadow: 0 14px 14px rgba(14,56,116,.15); transition: transform .25s ease, box-shadow .25s ease; }
-.product-card::before { content: "#TheWiseChoice"; position: absolute; z-index: 2; top: 16px; left: 16px; padding: 6px 11px; border-radius: 2px; background: #ffc727; color: #0a2363; font-size: 10px; line-height: 12px; font-weight: 700; letter-spacing: .1px; }
+/* .product-card::before { content: "#TheWiseChoice"; position: absolute; z-index: 2; top: 16px; left: 16px; padding: 6px 11px; border-radius: 2px; background: #ffc727; color: #0a2363; font-size: 10px; line-height: 12px; font-weight: 700; letter-spacing: .1px; } */
 .product-card:hover { transform: translateY(-6px); box-shadow: 0 18px 20px rgba(14,56,116,.2); }
 .product-card > img { display: block; width: 100%; height: 262px; object-fit: fill; border-radius: 11px 11px 0 0; }
 .product-card > div { padding: 22px 23px; }
@@ -49,7 +49,7 @@
   .hero-swiper, .hero-swiper .swiper-slide { height: auto; }
   .hero-slide { aspect-ratio: 360 / 628; }
   .hero-slide > picture > img { object-fit: cover; object-position: center; }
-  .hero-copy { position: absolute; inset: 0; width: calc(100% - 30px); padding-top: calc(30.55% + 35px); }
+  .hero-copy { position: absolute; inset: 0; width: calc(100% - 30px); padding-top: 280px; }
   .hero-title { font-size: clamp(16.8px,5.664vw,38.4px); line-height: 1.18; letter-spacing: 0; }
   .hero-promise { max-width: 100%; margin-top: 22px; padding: 10px 20px; font-size: clamp(9.6px,3.33vw,19.2px); white-space: nowrap; }
   .hero-rule { width: 47.3%; height: 6px; margin-top: 27px; }
