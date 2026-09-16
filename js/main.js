@@ -23,7 +23,7 @@ const productMenus = [
     ['CitiMax Series', 'inverter-batteries/citimax-series/'],
   ] },
   { label: 'LithTec Combo', path: 'lithtec-combo/', entries: [
-    ['Home UPS + Lithium Battery', 'lithtec-combo/complete-combo/'],
+    ['LithTec Combo', 'lithtec-combo/complete-combo/'],
     ['Lithium Battery', 'lithtec-combo/lithium-battery/'],
     ['Sine Wave Home UPS', 'lithtec-combo/sine-wave-home-ups/'],
     ['Square Wave Home UPS', 'lithtec-combo/square-wave-home-ups/'],
