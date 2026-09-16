@@ -136,15 +136,28 @@ body .merged-header.is-compact .top-strip { height: 0; opacity: 0; visibility: h
 
 /* Shared header states and global footer branding. */
 body .merged-header.nav-glass {
+  isolation: isolate;
   border-bottom: 0;
-  background: linear-gradient(180deg, rgba(5, 20, 48, .96) 0%, rgba(7, 29, 63, .78) 45%, rgba(9, 32, 68, .34) 74%, transparent 100%) !important;
+  background: transparent !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
+}
+body .merged-header.nav-glass::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: calc(100% + 30px);
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(5, 20, 48, .78) 0%, rgba(7, 29, 63, .62) 43%, rgba(9, 32, 68, .28) 72%, transparent 100%);
 }
 body .merged-header.nav-glass.is-compact {
   background: linear-gradient(#092044f2, #092044df) !important;
   backdrop-filter: blur(8px) !important;
 }
+body .merged-header.nav-glass.is-compact::before { opacity: 0; }
 body .merged-header .top-strip a[href$="#contact"] {
   padding: 0;
   border: 0;
