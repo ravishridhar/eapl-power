@@ -148,10 +148,10 @@ body .merged-header.nav-glass::before {
   top: 0;
   right: 0;
   left: 0;
-  height: calc(100% + 30px);
+  height: calc(100% + 170px);
   content: '';
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(5, 20, 48, .78) 0%, rgba(7, 29, 63, .62) 43%, rgba(9, 32, 68, .28) 72%, transparent 100%);
+  background: linear-gradient(180deg, rgba(4, 17, 42, .95) 0%, rgba(6, 25, 57, .8) 42%, rgba(9, 32, 68, .44) 72%, transparent 100%);
 }
 body .merged-header.nav-glass.is-compact {
   background: linear-gradient(#092044f2, #092044df) !important;
