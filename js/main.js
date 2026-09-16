@@ -25,7 +25,7 @@ const productMenus = [
   { label: 'LithTec Combo', path: 'lithtec-combo/', entries: [
     ['Home UPS + Lithium Battery', 'lithtec-combo/complete-combo/'],
     ['Lithium Battery', 'lithtec-combo/lithium-battery/'],
-    ['Sine Wave Home UPS', 'lithtec-combo/#sine-wave'],
+    ['Sine Wave Home UPS', 'lithtec-combo/sine-wave-home-ups/'],
     ['Square Wave Home UPS', 'lithtec-combo/square-wave-home-ups/'],
   ] },
 ];

@@ -11,10 +11,10 @@
  .citimax-battery-page .detail-hero-copy > span { font-weight: 400; }
  .citimax-battery-page .detail-hero-copy .wise-choice { margin-top: 98px; }
  .citimax-battery-page .product-summary { padding: 80px 0; min-height: 432px; }
- .citimax-battery-page .summary-grid { grid-template-columns: 470px 360px; justify-content: space-between; gap: 31px; }
- .citimax-battery-page .summary-grid h2 { margin: 0 0 10px; font-size: 42px; line-height: 48px; }
+ .citimax-battery-page .summary-grid { grid-template-columns: 861px 360px; justify-content: start; gap: 50px; }
+ .citimax-battery-page .summary-grid h2 { margin: 0 0 10px; font-size: 48px; line-height: 54px; white-space: nowrap; }
  .citimax-battery-page .summary-grid h3 { margin-bottom: 10px; }
- .citimax-battery-page .summary-grid > div:first-child > p { font-size: 13px; line-height: 19px; }
+ .citimax-battery-page .summary-grid > div:first-child > p { max-width: 861px; font-size: 15px; line-height: 22px; }
  .citimax-battery-page .summary-stat { width: 100%; height: 240px; min-height: 240px; margin-top: 32px; }
  .citimax-battery-page .summary-stat { gap: 9px; padding: 25px 20px; }
  .citimax-battery-page .summary-stat > img { width: 121px; height: 122px; flex-basis: 121px; }

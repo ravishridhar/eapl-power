@@ -68,3 +68,10 @@
   .range-controls .figma-pagination .swiper-pagination-bullet { width: 20px; }
   .range-controls .circle-arrow { width: 36px; height: 36px; }
 }
+.home-calculator-visual { display: flex; width: 100%; justify-content: center; }
+.home-calculator-image { width: 100%; max-width: 650px; }
+
+@media (min-width: 1024px) {
+  .home-calculator-visual { justify-content: flex-end; }
+  .home-calculator-image { width: 650px; max-width: none; flex: 0 0 650px; }
+}
