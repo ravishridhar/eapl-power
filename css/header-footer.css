@@ -8,3 +8,20 @@ body .merged-header>.wrap>.btn{display:none!important}
 
 /* Larger shared footer brand mark. */
 footer>.wrap:first-child>div:first-child>img{width:150px!important;height:75px!important}
+
+/* Place every first-page hero behind the transparent merged header. */
+body .merged-header~main>section:first-child{margin-top:-142px!important}
+@media (max-width:1023px){body .merged-header~main>section:first-child{margin-top:-116px!important}}
+
+/* Keep inside-page hero content below the merged logo navigation. */
+@media (min-width:1024px){
+ body .detail-hero,body .listing-hero,body .calculator-hero{min-height:592px!important}
+ body .detail-hero .detail-hero-inner{min-height:592px!important}
+ body .detail-hero-inner,body .listing-hero-content,body .calculator-hero-inner{transform:translateY(52px)}
+}
+@media (max-width:1023px){
+ body .detail-hero{min-height:694px!important}
+ body .detail-hero .detail-hero-inner{min-height:694px!important}
+ body .listing-hero,body .calculator-hero{min-height:784px}
+ body .detail-hero-inner,body .listing-hero-content,body .calculator-hero-inner{transform:translateY(44px)}
+}
