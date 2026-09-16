@@ -137,7 +137,7 @@ body .merged-header.is-compact .top-strip { height: 0; opacity: 0; visibility: h
 /* Shared header states and global footer branding. */
 body .merged-header.nav-glass {
   border-bottom: 0;
-  background: transparent !important;
+  background: linear-gradient(180deg, rgba(5, 20, 48, .96) 0%, rgba(7, 29, 63, .78) 45%, rgba(9, 32, 68, .34) 74%, transparent 100%) !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
 }
