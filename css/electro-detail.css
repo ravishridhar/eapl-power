@@ -1,5 +1,5 @@
 /* Electro Series: Figma desktop 70:2098 and mobile 26:3907. */
-.electro-page .detail-hero { background-image: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/electro-hero.png'); }
+.electro-page .detail-hero { background-image: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/electro-hero.webp'); }
 .electro-page .summary-grid { grid-template-columns: minmax(0,470fr) repeat(3,minmax(0,240fr)); gap: 25px; }
 .electro-page .summary-stat { gap: 10px; padding: 25px 19px; }
 .electro-page .summary-stat > img { width: 64px; height: 64px; flex-basis: 64px; }
@@ -17,7 +17,7 @@
  .electro-page .summary-stat strong { font-size: 18px; line-height: 28px; }
 }
 @media (max-width: 767px) {
- .electro-page .detail-hero { background: linear-gradient(180deg,rgba(10,46,99,.9) 11%,rgba(10,46,99,.9) 55.66%,transparent 73.14%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/electro-hero-mobile.png') calc(50% - 162px) 384px/812px 364px no-repeat #0e3670; }
+ .electro-page .detail-hero { background: linear-gradient(180deg,rgba(10,46,99,.9) 11%,rgba(10,46,99,.9) 55.66%,transparent 73.14%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/electro-hero-mobile.webp') calc(50% - 162px) 384px/812px 364px no-repeat #0e3670; }
  .electro-page .summary-grid { grid-template-columns: minmax(0,1fr); gap: 40px; }
  .electro-page .summary-grid > div:first-child > p { font-size: 15px; line-height: 22px; }
  .electro-page .summary-stat { min-height: 201px; padding: 20px; }

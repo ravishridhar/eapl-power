@@ -3,27 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "main": "js/main.js",
-
   "scripts": {
+  "prebuild": "npm run images:convert",
   "build": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --minify",
   "dev": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --watch",
+  "images:convert": "node scripts/convert-images.js",
   "serve": "vite",
-  "deploy": "npm run build && gh-pages -d ."
-},
-
+    "deploy": "npm run build && gh-pages -d ."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "swiper": "^14.2.0",
     "tailwindcss": "^4.3.3"
   },
-
   "devDependencies": {
     "gh-pages": "^6.3.0",
+    "sharp": "^0.35.4",
     "vite": "^8.3.0"
   }
 }

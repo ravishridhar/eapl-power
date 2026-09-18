@@ -1,6 +1,6 @@
 /* Sino Series detail: desktop 70:1726, mobile 26:3550. */
 .sino-page { background: white; }
-.sino-page .detail-hero { background: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/sino-detail-hero.png') center -33px/1440px 646px no-repeat #0e3670; }
+.sino-page .detail-hero { background: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/sino-detail-hero.webp') center -33px/1440px 646px no-repeat #0e3670; }
 .sino-page .detail-hero-copy { margin-top: 23.52px; }
 .sino-page .detail-hero-copy h1 { width: 540px; font-size: 54px; line-height: 60px; font-weight: 900; letter-spacing: 1px; }
 .sino-page .detail-hero-copy > span { font-weight: 400; padding-top: 20px; }
@@ -47,7 +47,7 @@
 @media (max-width: 767px) {
   .sino-page .wrap { width: calc(100% - 30px); }
   .sino-page .detail-hero,.sino-page .detail-hero-inner { min-height: 740px; }
-  .sino-page .detail-hero { background: linear-gradient(180deg,#0e3670 42%,rgba(10,46,99,.85) 55%,transparent 74%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/sino-detail-hero.png') calc(50% - 184px) 352px/927px 416px no-repeat #0e3670; }
+  .sino-page .detail-hero { background: linear-gradient(180deg,#0e3670 42%,rgba(10,46,99,.85) 55%,transparent 74%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/sino-detail-hero.webp') calc(50% - 184px) 352px/927px 416px no-repeat #0e3670; }
   .sino-page .detail-hero-inner { padding-top: 92px; }
   .sino-page .product-header > .wrap > a:first-child img { width: 91px; height: 48px; }
   .sino-page .detail-breadcrumb { font-size: 11px; line-height: 10px; gap: 12px; letter-spacing: .6px; white-space: normal; }
