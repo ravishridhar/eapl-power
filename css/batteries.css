@@ -1,5 +1,5 @@
 .battery-hero {
-  background-image: url('../images/header/Inverter%20Batteries.png');
+  background-image: url('../images/header/Inverter Batteries.webp');
   background-position: center 43%;
 }
 .battery-hero::after {
@@ -21,7 +21,7 @@
 }
 
 @media (max-width: 1023px) {
-  .battery-hero { background-image: url('../images/header/mobile/3-wo.png'); background-position: center 240px; }
+  .battery-hero { background-image: url('../images/header/mobile/3-wo.webp'); background-position: center 240px; }
   .battery-hero h1 { width: min(300px,100%); white-space: normal; font-size: 42px; line-height: 46px; }
   .battery-tagline { margin-top: 34px; font-size: 20px; }
   .battery-card, .battery-card:first-child { height: auto; min-height: 0; }

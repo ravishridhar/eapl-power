@@ -158,6 +158,19 @@ body .merged-header.nav-glass.is-compact {
   backdrop-filter: blur(8px) !important;
 }
 body .merged-header.nav-glass.is-compact::before { opacity: 0; }
+body.product-detail-page .merged-header.nav-glass:not(.is-compact)::before,
+body.listing-page .merged-header.nav-glass:not(.is-compact)::before {
+  height: calc(100% + 30px);
+}
+@media (min-width: 1024px) {
+  body.product-detail-page .detail-hero,
+  body.listing-page .listing-hero,
+  body.listing-page .calculator-hero {
+    background-size: 100% auto !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
 body .merged-header .top-strip a[href$="#contact"] {
   padding: 0;
   border: 0;

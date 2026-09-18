@@ -1,5 +1,5 @@
 /* Lithium battery detail: Figma 109:13318. Scoped to preserve the shared header/footer. */
-.lithium-battery-page .detail-hero { background-image: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/lithium-battery/hero.png'); }
+.lithium-battery-page .detail-hero { background-image: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/lithium-battery/hero.webp'); }
 .lithium-battery-page .sino-feature-icon img { width: 36px; height: 36px; object-fit: contain; }
 .lithium-battery-page .ownership-grid { grid-template-columns: repeat(2, minmax(0, 400px)); justify-content: center; }
 .lithium-battery-page .fit-grid.four { justify-content: center; }
@@ -45,7 +45,7 @@
  .lithium-battery-page .ownership-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 767px) {
- .lithium-battery-page .detail-hero { background: linear-gradient(180deg,#0e3670 42%,rgba(10,46,99,.85) 55%,transparent 74%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/lithium-battery/hero.png') calc(50% - 184px) 352px/927px 416px no-repeat #0e3670; }
+ .lithium-battery-page .detail-hero { background: linear-gradient(180deg,#0e3670 42%,rgba(10,46,99,.85) 55%,transparent 74%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/lithium-battery/hero.webp') calc(50% - 184px) 352px/927px 416px no-repeat #0e3670; }
  .lithium-battery-page .fit-grid article { padding: 30px 15px; }
  .lithium-battery-page .fit-grid article img { width: 96px; height: 96px; margin: 0; }
  .lithium-battery-page .fit-grid p { margin-top: 34px; }

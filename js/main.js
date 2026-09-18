@@ -3,6 +3,19 @@ const mobileMenu = document.querySelector('#mobileMenu');
 const menuOverlay = document.querySelector('#menuOverlay');
 const menuClose = document.querySelector('#menuClose');
 
+// Discourage casual access to the context menu and browser developer tools.
+document.addEventListener('contextmenu', (event) => event.preventDefault());
+document.addEventListener('keydown', (event) => {
+  const key = event.key.toLowerCase();
+  const windowsDevTools = event.ctrlKey && event.shiftKey && ['i', 'j', 'c'].includes(key);
+  const macDevTools = event.metaKey && event.altKey && ['i', 'j', 'c', 'u'].includes(key);
+  const viewSource = event.ctrlKey && key === 'u';
+  if (event.key === 'F12' || windowsDevTools || macDevTools || viewSource) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+}, true);
+
 const listingSizeButton = document.querySelector('.listing-hero .btn');
 if (listingSizeButton) listingSizeButton.textContent = 'Size My Interter';
 
