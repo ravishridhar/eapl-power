@@ -31,6 +31,15 @@
 .swiper-button-disabled { opacity: .4; }
 #range h2 { letter-spacing: -.42px; }
 #enquiryForm .field { font-weight: 400; letter-spacing: normal; text-transform: none; }
+#enquiryForm .btn { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+#enquiryForm .btn:hover,
+#enquiryForm .btn:focus-visible {
+  background-color: #f5b900;
+  box-shadow: 0 10px 22px rgba(219,91,19,.22);
+  transform: translateY(-2px);
+  outline: none;
+}
+#enquiryForm .btn:active { transform: translateY(0); }
 
 @media (min-width: 901px) {
   #range h2 { max-width: 720px; white-space: nowrap; }
