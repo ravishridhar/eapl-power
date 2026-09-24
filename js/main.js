@@ -168,6 +168,13 @@ document.querySelector('#enquiryForm')?.addEventListener('submit', (event) => {
   event.currentTarget.reset();
 });
 
+document.querySelector('#partnerForm')?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const status = document.querySelector('#partnerFormStatus');
+  status.textContent = 'Thank you. Our partnership team will contact you shortly.';
+  event.currentTarget.reset();
+});
+
 // Keep the header compact after scrolling, without shifting the page content.
 const siteHeader = document.querySelector('.merged-header');
 if (siteHeader) {

@@ -7,7 +7,7 @@
 .listing-page .nav-glass > .wrap > a:first-child img,
 .listing-page .mobile-sidebar > div:first-child img,
 .listing-page footer .wrap.grid > div:first-child > img { content: url('../images/logo.webp'); }
-.listing-hero h1::after { content: ""; display: inline-block; width: 17px; height: 17px; margin-left: 8px; border-radius: 50%; background: #ffc727; }
+/* .listing-hero h1::after { content: ""; display: inline-block; width: 17px; height: 17px; margin-left: 8px; border-radius: 50%; background: #ffc727; } */
 .listing-hero h1 + p + div { margin-top: 40px; }
 .listing-hero .btn, .listing-hero .btn + a { display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 30px; font-size: 14px; line-height: 12px; }
 .listing-eyebrow { display: flex; align-items: center; gap: 12px; color: #ffc727; font-size: 12px; font-weight: 700; letter-spacing: 2.64px; text-transform: uppercase; }
@@ -33,7 +33,7 @@
   .listing-hero-content > div:last-child { max-width: 330px; }
   .listing-hero-content > div:last-child { margin-top: 21.28px; }
   .listing-hero h1 { margin-top: 22px; width: 235px; font-size: 44px; line-height: 46px; }
-  .listing-hero h1::after { width: 10px; height: 10px; margin-left: 5px; }
+  /* .listing-hero h1::after { width: 10px; height: 10px; margin-left: 5px; } */
   .listing-hero h1 + p { margin-top: 10px; font-size: 15px; line-height: 24px; }
   .listing-hero h1 + p + div { margin-top: 30px; gap: 14px; flex-wrap: wrap; }
   .listing-hero .btn, .listing-hero .btn + a { height: 36px; padding: 0 20px; font-size: 14px; }
