@@ -102,3 +102,14 @@
   .home-calculator-visual { justify-content: flex-end; }
   .home-calculator-image { width: 650px; max-width: none; flex: 0 0 650px; }
 }
+
+@media (min-width: 1600px) {
+  .home-calculator-section {
+    min-height: min(45vw,720px);
+    background-size: auto 100%;
+    background-position: center;
+  }
+  .home-calculator-section > .wrap {
+    min-height: calc(min(45vw,720px) - 134.4px);
+  }
+}

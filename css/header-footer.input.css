@@ -335,6 +335,18 @@ body .merged-header ~ main > section:first-child { margin-top: -142px !important
   body .listing-hero-content,
   body .calculator-hero-inner { transform: translateY(52px); }
 }
+/* Preserve complete hero artwork on wide desktop displays without changing the
+   established 1024–1599px desktop layout. */
+@media (min-width: 1600px) {
+  body.product-detail-page .detail-hero,
+  body.product-detail-page .detail-hero .detail-hero-inner {
+    min-height: clamp(592px,44.86vw,760px) !important;
+  }
+  body.listing-page .listing-hero,
+  body.listing-page .calculator-hero {
+    min-height: clamp(592px,48.34vw,780px) !important;
+  }
+}
 @media (max-width: 1023px) {
   body .detail-hero { min-height: 694px !important; }
   body .detail-hero .detail-hero-inner { min-height: 694px !important; }
