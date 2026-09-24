@@ -1,5 +1,5 @@
 .home-hero { margin-top: -142px; background: #0e3670; }
-.hero-swiper, .hero-swiper .swiper-slide { height: 696px; }
+.hero-swiper, .hero-swiper .swiper-slide { height: 100vh; height: 100svh; }
 .hero-slide { position: relative; }
 .hero-slide > picture { position: absolute; inset: 0; }
 .hero-slide > picture > img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -7,9 +7,10 @@
 .hero-title { margin: 0; max-width: 760px; font-size: clamp(31.2px,3vw,43.2px); line-height: 1.24; font-weight: 900; letter-spacing: 1px; }
 .hero-promise { display: inline-block; margin-top: 30px; padding: 10px 48px; border-radius: 999px; background: #ffd60a; color: #1d3e89; font-size: 19.2px; font-weight: 600; }
 .hero-rule { width: 312px; max-width: 100%; height: 6px; margin-top: 30px; background: #f58220; }
-.hero-tagline { position: absolute; top: 540px; margin: 0; font-size: 19.2px; font-weight: 900; font-style: italic; }
-.hero-tagline span, .hero-wise-title span { color: #f58220; }
-.hero-wise-title { margin: 0; text-align: center; font-size: clamp(28.8px,3.18vw,45.6px); line-height: 1.2; font-weight: 900; font-style: italic; }
+.hero-tagline { position: absolute; top: 540px; margin: 0; }
+.hero-wise-title { display: flex; justify-content: center; margin: 0; }
+.hero-tagline img { display: block; width: min(220px,55vw); height: auto; }
+.hero-wise-title img { display: block; width: min(550px,82vw); height: auto; }
 .range-products { width: 100%; overflow: hidden !important; padding: 8px 25px 30px; }
 .range-products .swiper-slide { width: 340px; }
 .product-card { position: relative; height: 478px; border: 1px solid #d9e1ea; border-radius: 12px; box-shadow: 0 14px 14px rgba(14,56,116,.15); transition: transform .25s ease, box-shadow .25s ease; }
@@ -55,16 +56,17 @@
 
 @media (max-width: 1023px) {
   main > .home-hero:first-child { margin-top: -116px; padding-bottom: 0; }
-  .hero-swiper, .hero-swiper .swiper-slide { height: auto; }
-  .hero-slide { aspect-ratio: 360 / 628; }
+  .hero-swiper, .hero-swiper .swiper-slide { height: 100vh; height: 100svh; }
+  .hero-slide { aspect-ratio: auto; }
   .hero-slide > picture > img { object-fit: cover; object-position: center; }
   .hero-copy { position: absolute; inset: 0; width: calc(100% - 30px); padding-top: 236px; }
   .hero-title { font-size: clamp(16.8px,5.664vw,38.4px); line-height: 1.18; letter-spacing: 0; }
   .hero-promise { max-width: 100%; margin-top: 22px; padding: 10px 20px; font-size: clamp(9.6px,3.33vw,19.2px); white-space: nowrap; }
   .hero-rule { width: 47.3%; height: 6px; margin-top: 27px; }
-  .hero-tagline { top: 80%; font-size: clamp(14.4px,4.668vw,28.8px); white-space: nowrap; }
+  .hero-tagline { top: 502px; }
   .hero-slide-wise .hero-copy { padding-top: calc(25% + 35px); }
-  .hero-wise-title { font-size: clamp(16.8px,5.664vw,38.4px); text-align: left; white-space: nowrap; }
+  .hero-tagline img { width: min(190px,53vw); }
+  .hero-wise-title img { width: min(440px,84vw); }
   .home-hero .hero-controls { bottom: 24px; }
   #range { height: auto; padding-top: 33.6px; padding-bottom: 33.6px; }
   #range > .wrap { width: 100%; }
@@ -86,6 +88,13 @@
 }
 .home-calculator-visual { display: flex; width: 100%; justify-content: center; }
 .home-calculator-image { width: 100%; max-width: 650px; }
+.home-calculator-section {
+  background-color: #0e3874;
+  background-image: url('../images/load-calculator-banner-bg.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 @media (min-width: 1024px) {
   .home-calculator-visual { justify-content: flex-end; }
