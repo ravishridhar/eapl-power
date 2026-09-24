@@ -160,19 +160,90 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setMobileMenu(false);
 });
 
-document.querySelector('#enquiryForm')?.addEventListener('submit', (event) => {
+const sendEaplFormEmail = async (form, { source, extra = {} } = {}) => {
+  const config = window.EAPL_EMAIL_CONFIG;
+  const requiredConfig = [config?.serviceId, config?.templateId, config?.publicKey];
+  if (!config || requiredConfig.some((value) => !value || value.startsWith('YOUR_'))) {
+    throw new Error('Email service is not configured yet.');
+  }
+
+  const formValues = Object.fromEntries(new FormData(form).entries());
+  const submittedValues = { ...formValues, ...extra };
+  const message = Object.entries(submittedValues)
+    .map(([key, value]) => `${key.replace(/([A-Z])/g, ' $1').replace(/^./, (letter) => letter.toUpperCase())}: ${value || '—'}`)
+    .join('\n');
+
+  const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      service_id: config.serviceId,
+      template_id: config.templateId,
+      user_id: config.publicKey,
+      template_params: {
+        to_email: config.toEmail,
+        from_email: config.fromEmail,
+        reply_to: formValues.email || config.fromEmail,
+        subject: `EAPL website enquiry — ${source}`,
+        form_source: source,
+        message,
+        ...submittedValues,
+      },
+    }),
+  });
+
+  if (!response.ok) throw new Error((await response.text()) || 'Unable to send email.');
+};
+
+window.sendEaplFormEmail = sendEaplFormEmail;
+
+document.querySelector('#enquiryForm')?.addEventListener('submit', async (event) => {
   event.preventDefault();
+  const form = event.currentTarget;
   const status = document.querySelector('#formStatus');
-  status.textContent = 'Thank you. Our team will contact you shortly.';
   status.classList.remove('hidden');
-  event.currentTarget.reset();
+  const button = form.querySelector('[type="submit"]');
+  const buttonLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Sending…';
+  status.textContent = 'Sending your enquiry…';
+  try {
+    await sendEaplFormEmail(form, { source: 'Home enquiry form' });
+    status.textContent = 'Thank you. Your enquiry has been sent successfully.';
+    form.reset();
+  } catch (error) {
+    console.error('Email submission failed:', error);
+    status.textContent = error.message === 'Email service is not configured yet.'
+      ? 'Email service details need to be added before this form can send.'
+      : 'We could not send your enquiry. Please try again.';
+  } finally {
+    button.disabled = false;
+    button.textContent = buttonLabel;
+  }
 });
 
-document.querySelector('#partnerForm')?.addEventListener('submit', (event) => {
+document.querySelector('#partnerForm')?.addEventListener('submit', async (event) => {
   event.preventDefault();
+  const form = event.currentTarget;
   const status = document.querySelector('#partnerFormStatus');
-  status.textContent = 'Thank you. Our partnership team will contact you shortly.';
-  event.currentTarget.reset();
+  const button = form.querySelector('[type="submit"]');
+  const buttonLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Sending…';
+  status.textContent = 'Sending your application…';
+  try {
+    await sendEaplFormEmail(form, { source: 'Partner application form' });
+    status.textContent = 'Thank you. Your partner application has been sent successfully.';
+    form.reset();
+  } catch (error) {
+    console.error('Email submission failed:', error);
+    status.textContent = error.message === 'Email service is not configured yet.'
+      ? 'Email service details need to be added before this form can send.'
+      : 'We could not send your application. Please try again.';
+  } finally {
+    button.disabled = false;
+    button.textContent = buttonLabel;
+  }
 });
 
 // Keep the header compact after scrolling, without shifting the page content.
