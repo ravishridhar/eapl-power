@@ -71,9 +71,38 @@ document.querySelectorAll('.category-tabs button').forEach((button) => button.ad
   allApplianceCards.forEach(card => { card.hidden = card.dataset.category !== button.textContent.trim(); });
 }));
 
-document.querySelector('#calculatorForm').addEventListener('submit', (event) => {
+document.querySelector('#calculatorForm').addEventListener('submit', async (event) => {
   event.preventDefault();
-  document.querySelector('#calculatorStatus').textContent = 'Thank you. Your calculator result has been submitted.';
+  const form = event.currentTarget;
+  const status = document.querySelector('#calculatorStatus');
+  const button = form.querySelector('[type="submit"]');
+  const buttonLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Sending…';
+  status.textContent = 'Sending your calculator result…';
+  try {
+    await window.sendEaplFormEmail(form, {
+      source: 'Load calculator enquiry',
+      extra: {
+        calculatedLoad: document.querySelector('#formLoad').textContent,
+        vaRequired: document.querySelector('#formVa').textContent,
+        backupTime: document.querySelector('#formHours').textContent,
+        waveform: document.querySelector('#formWave').textContent,
+        batteryPreference: document.querySelector('#formBattery').textContent,
+      },
+    });
+    status.textContent = 'Thank you. Your calculator result has been sent successfully.';
+    form.reset();
+    updateCalculator();
+  } catch (error) {
+    console.error('Email submission failed:', error);
+    status.textContent = error.message === 'Email service is not configured yet.'
+      ? 'Email service details need to be added before this form can send.'
+      : 'We could not send your result. Please try again.';
+  } finally {
+    button.disabled = false;
+    button.textContent = buttonLabel;
+  }
 });
 
 updateCalculator();

@@ -39,8 +39,9 @@
 .partner-form-copy h2 { color: #fff; }
 .partner-form-copy p { color: #bec9d9; }
 .partner-form-copy ul { display: grid; gap: 15px; margin-top: 26px; }
-.partner-form-copy li { position: relative; padding-left: 29px; color: #e1e7ef; font-size: 13px; line-height: 20px; }
-.partner-form-copy li::before { position: absolute; top: 2px; left: 0; width: 18px; height: 18px; content: '✓'; border-radius: 50%; color: #0e3874; background: #ffc727; font-size: 11px; font-weight: 900; line-height: 18px; text-align: center; }
+.partner-form-copy li { display: flex; align-items: flex-start; gap: 11px; color: #e1e7ef; font-size: 13px; line-height: 20px; }
+.partner-check { display: grid; width: 18px; height: 18px; flex: 0 0 18px; margin-top: 1px; place-items: center; border-radius: 50%; color: #0e3874; background: #ffc727; }
+.partner-check svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .partner-form { padding: 36px; border: 1px solid rgba(255,255,255,.15); border-radius: 20px; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,.15); }
 .partner-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px 24px; }
 .partner-fields label { min-width: 0; }
