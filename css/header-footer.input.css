@@ -354,13 +354,13 @@ body .merged-header ~ main > section:first-child { margin-top: -142px !important
     min-height: 718px !important;
   }
   body.product-detail-page .detail-hero {
-    background-size: 100% 100%, 100% 100%, 1600px 100% !important;
+    background-size: 100% 100%, 100% 100%, auto 100% !important;
     background-position: center, center, top center !important;
   }
   body.listing-page .listing-hero,
   body.listing-page .calculator-hero {
     min-height: 773px !important;
-    background-size: 1600px 100% !important;
+    background-size: auto 100% !important;
     background-position: top center !important;
   }
 }
