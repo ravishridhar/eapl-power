@@ -351,17 +351,32 @@ body .merged-header ~ main > section:first-child { margin-top: -142px !important
 @media (min-width: 1600px) {
   body.product-detail-page .detail-hero,
   body.product-detail-page .detail-hero .detail-hero-inner {
-    min-height: clamp(592px,44.86vw,760px) !important;
+    min-height: 718px !important;
   }
   body.product-detail-page .detail-hero {
-    background-size: 100% 100%, 100% 100%, min(100%,1600px) auto !important;
+    background-size: 100% 100%, 100% 100%, 1600px 100% !important;
     background-position: center, center, top center !important;
   }
   body.listing-page .listing-hero,
   body.listing-page .calculator-hero {
-    min-height: clamp(592px,48.34vw,780px) !important;
-    background-size: min(100%,1600px) auto !important;
+    min-height: 773px !important;
+    background-size: 1600px 100% !important;
     background-position: top center !important;
+  }
+}
+
+/* Desktop inside-page heroes fill the viewport; their artwork rules above fill
+   the complete section height so no plain background strip remains. */
+@media (min-width: 1024px) {
+  body.product-detail-page .detail-hero,
+  body.product-detail-page .detail-hero .detail-hero-inner,
+  body.listing-page .listing-hero,
+  body.listing-page .calculator-hero,
+  body.listing-page .partner-hero {
+    height: 100vh !important;
+    height: 100svh !important;
+    min-height: 100vh !important;
+    min-height: 100svh !important;
   }
 }
 @media (max-width: 1023px) {
@@ -372,15 +387,4 @@ body .merged-header ~ main > section:first-child { margin-top: -142px !important
   body .detail-hero-inner,
   body .listing-hero-content,
   body .calculator-hero-inner { transform: translateY(44px); }
-}
-
-/* Match the homepage hero: every inside-page hero fills the viewport. */
-body:is(.listing-page, .product-detail-page) :is(.listing-hero, .detail-hero, .calculator-hero, .partner-hero) {
-  height: auto !important;
-  min-height: 100vh !important;
-  min-height: 100svh !important;
-}
-body.product-detail-page .detail-hero .detail-hero-inner {
-  min-height: 100vh !important;
-  min-height: 100svh !important;
 }
