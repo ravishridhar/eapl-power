@@ -11,7 +11,7 @@
 
 @media (min-width: 1024px) {
   .product-detail-page .detail-hero-inner {
-    padding-top: 152px;
+    padding-top: 152px !important;
     transform: none;
   }
   .product-detail-page .detail-hero-copy {
@@ -97,7 +97,7 @@
 .detail-faq { min-height: auto; padding: 44.8px 0 56px; background: #e7eef6; }
 .detail-faq-list { max-width: 940px; margin: 15px auto 0; }
 .detail-faq details { margin-bottom: 15px; overflow: hidden; border: 1px solid #dfdfdf; border-radius: 8px; background: #fff; }
-.detail-faq summary { position: relative; min-height: 59px; padding: 16px 64px 16px 25px; cursor: pointer; list-style: none; color: #0a2e63; font-size: 14px; font-weight: 800; line-height: 20px; letter-spacing: .2px; }
+.detail-faq summary { position: relative; min-height: 59px; padding: 16px 64px 16px 25px; cursor: pointer; list-style: none; color: #0a2e63; font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: .2px; }
 .detail-faq summary::-webkit-details-marker { display: none; }
 .detail-faq summary::after { position: absolute; top: 16px; right: 25px; width: 27px; height: 27px; content: ''; background: url('../images/faq-plus.svg') center/contain no-repeat; }
 .detail-faq details[open] summary { min-height: 36px; padding-bottom: 0; }

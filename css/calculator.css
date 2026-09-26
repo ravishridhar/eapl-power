@@ -79,7 +79,7 @@ body { background: #f2f2f5; }
 .faq-wrap { max-width: 940px; }
 .faq-list { display: grid; gap: 15px; margin-top: 8.4px; }
 .faq-list details { border: 1px solid #dfdfdf; border-radius: 8px; background: #fff; overflow: hidden; }
-.faq-list summary { position: relative; padding: 19px 64px 19px 25px; color: #0a2e63; font-size: 14px; font-weight: 900; cursor: pointer; list-style: none; }
+.faq-list summary { position: relative; padding: 19px 64px 19px 25px; color: #0a2e63; font-size: 14px; font-weight: 700; cursor: pointer; list-style: none; }
 .faq-list summary::after { content: ""; position: absolute; top: 10px; right: 18px; display: grid; width: 27px; height: 27px; place-items: center; border-radius: 50%; background: url("../images/faq-plus.svg") center/contain no-repeat; }
 .faq-list details[open] summary::after { background-image: url("../images/faq-minus.svg"); }
 .faq-list details p { padding: 0 25px 20px; color: #4c5a72; font-size: 14px; line-height: 20px; }
