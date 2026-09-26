@@ -198,9 +198,33 @@
   }
   .product-detail-page .benefit-controls { margin-top: 22.4px !important; }
   .product-detail-page .perfect-fit h2 { margin-bottom: 16.8px !important; }
-  .product-detail-page .fit-grid { gap: 20px !important; }
-  .product-detail-page .fit-grid article { padding: 30px 15px !important; }
-  .product-detail-page .fit-grid p { margin-top: 34px !important; }
+  .product-detail-page .fit-grid {
+    display: flex !important;
+    width: 100% !important;
+    max-width: none !important;
+    grid-template-columns: none !important;
+    justify-content: flex-start !important;
+    gap: 20px !important;
+    margin-left: 0 !important;
+    padding: 0 0 16px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .product-detail-page .fit-grid::-webkit-scrollbar { display: none; }
+  .product-detail-page .fit-grid article {
+    width: 195px !important;
+    height: 233px !important;
+    min-height: 233px !important;
+    flex: 0 0 195px !important;
+    justify-content: flex-start !important;
+    padding: 30px 15px !important;
+    scroll-snap-align: start;
+  }
+  .product-detail-page .fit-grid img { width: 96px !important; height: 96px !important; object-fit: contain; }
+  .product-detail-page .fit-grid p { margin-top: 34px !important; font-size: 18px; line-height: 24px; }
   .product-detail-page .download-grid {
     gap: 20px !important;
     margin-top: 16.8px !important;
