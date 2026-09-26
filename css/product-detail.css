@@ -64,7 +64,7 @@
 .benefit-grid article > span img { width: 54px; height: 54px; object-fit: contain; }
 .benefit-grid p { width: 235px; margin: 36px 0 0; font-size: 18px; font-weight: 800; line-height: 24px; letter-spacing: .2px; text-align: center; }
 .benefit-controls { display: grid; height: 42px; grid-template-columns: 1fr auto 1fr; align-items: center; margin-top: 22.4px; }
-.benefit-count { display: flex; align-items: center; gap: 7px; letter-spacing: .96px; }
+.benefit-count { display: flex; min-width: max-content; flex-wrap: nowrap; align-items: center; gap: 7px; letter-spacing: .96px; white-space: nowrap; }
 .benefit-count strong { color: #fff; font-size: 15px; font-weight: 800; }
 .benefit-count span { color: #c2cad5; font-size: 12px; font-weight: 500; }
 .benefit-pagination { display: flex; gap: 8px; }
