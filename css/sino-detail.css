@@ -81,10 +81,10 @@
   .sino-page .benefit-grid article > span { width: 96px; height: 96px; flex-basis: 96px; }
   .sino-page .benefit-grid article > span img { width: 54px; height: 54px; }
   .sino-page .benefit-grid p { width: 235px; margin-top: 36px; font-size: 18px; line-height: 24px; }
-  .sino-page .benefit-controls { margin-top: 22.4px; }
+  .sino-page .benefit-controls { grid-template-columns: 80px minmax(0,1fr) 74px; gap: 10px; margin-top: 22.4px; }
   .sino-page .perfect-fit { padding: 22.4px 0; }
   .sino-page .perfect-fit h2 { margin: 0 auto 16.8px; max-width: 330px; font-size: 28px; line-height: 34px; }
-  .sino-page .fit-grid { width: calc(100% + 15px); padding-right: 15px; gap: 20px; scrollbar-width: none; }
+  .sino-page .fit-grid { width: 100%; justify-content: flex-start !important; margin-left: 0; padding-right: 0; gap: 20px; scroll-padding-left: 0; scrollbar-width: none; }
   .sino-page .fit-grid article { padding: 30px 15px; overflow: hidden; }
   .sino-page .fit-grid img { width: 96px; height: 96px; object-fit: contain; }
   .sino-page .fit-grid p { margin: 34px 0 0; }
