@@ -143,10 +143,6 @@ body { background: #f2f2f5; }
   .faq-section { min-height: 0; padding: 28px 0; margin-bottom: 22.4px; }
 }
 /* Mobile layout from Figma 70:9635; content remains fluid for text scaling. */
-.calculator-mobile-contact { display: none; }
-@media (max-width: 1023px) {
-  .calculator-mobile-contact { display: inline-flex; align-items: center; justify-content: center; padding: 7px 18px; border-radius: 4px; background: #ffc727; color: #0a2e63; font-size: 12px; font-weight: 600; line-height: 12px; }
-}
 @media (max-width: 600px) {
   .wrap { width: calc(100% - 30px); }
   .calculator-hero { min-height: 740px; background-size: auto 671px; background-position: 35% bottom; }
