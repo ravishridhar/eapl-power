@@ -44,6 +44,8 @@ const productMenus = [
 ];
 const menuLinks = (menu) => menu.entries
   .map(([label, path]) => `<a href="${new URL(path, siteRoot).href}">${label}</a>`).join('');
+const mobileMenuLinks = (menu) =>
+  `<a href="${new URL(menu.path, siteRoot).href}">About ${menu.label}</a>${menuLinks(menu)}`;
 const desktopNav = document.querySelector('.merged-header > .wrap > nav');
 if (desktopNav) {
   productMenus.forEach((menu) => {
@@ -63,7 +65,7 @@ if (mobileProductNav) {
     const existing = [...mobileProductNav.children].find(node => (node.querySelector('.mobile-nav-trigger')?.textContent || node.textContent).trim() === menu.label);
     const group = document.createElement('div');
     group.className = 'mobile-nav-group';
-    group.innerHTML = `<button type="button" class="mobile-nav-trigger" aria-expanded="false" aria-controls="product-menu-${index}">${menu.label}<img src="${new URL('images/chevron.svg', siteRoot).href}" alt=""></button><div id="product-menu-${index}" class="mobile-submenu">${menuLinks(menu)}</div>`;
+    group.innerHTML = `<button type="button" class="mobile-nav-trigger" aria-expanded="false" aria-controls="product-menu-${index}">${menu.label}<img src="${new URL('images/chevron.svg', siteRoot).href}" alt=""></button><div id="product-menu-${index}" class="mobile-submenu">${mobileMenuLinks(menu)}</div>`;
     if (existing) existing.replaceWith(group);
     else mobileProductNav.append(group);
   });

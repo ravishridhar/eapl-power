@@ -34,8 +34,8 @@
  .electro-page .fit-grid article { padding: 0; }
  .electro-page .fit-grid picture { width: 195px; height: 140px; overflow: hidden; }
  .electro-page .fit-grid picture img { width: 244px; height: 244px; max-width: none; margin: -50px 0 0 -28px; object-fit: cover; }
- .electro-page .fit-grid article:nth-child(3) img { width: 228px; height: 228px; margin: -14px 0 0 -20px; }
- .electro-page .fit-grid article:nth-child(4) img { width: 239px; height: 159px; margin: 0 0 0 -28px; }
+ .electro-page .fit-grid article:nth-child(3) picture img { width: 228px; height: 228px; margin: -14px 0 0 -20px; }
+ .electro-page .fit-grid article:nth-child(4) picture img { width: 239px; height: 159px; margin: 0 0 0 -28px; }
  .electro-page .fit-grid p { margin-top: 20px; padding-inline: 15px; }
  .electro-page .detail-faq { min-height: 0; }
  .electro-page .detail-faq details[open] p { margin-right: 64px; }
