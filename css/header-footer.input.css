@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Montserrat is reserved for FAQ sections; the rest of the site uses Gotham. */
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Local Gotham family. Static faces are mapped to the weights used by the site. */
 @font-face {
   font-family: "Gotham";
@@ -120,6 +129,16 @@
   html { scroll-behavior: smooth; }
   body { margin: 0; color: #0a2e63; background: white; font-family: var(--font-sans); }
   button, input, textarea { font: inherit; }
+}
+
+/* FAQ typography across product pages and the load calculator. */
+.detail-faq,
+.faq-section {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+.detail-faq summary,
+.faq-section summary {
+  font-weight: 700 !important;
 }
 
 @layer components {
