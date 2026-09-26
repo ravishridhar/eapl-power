@@ -21,6 +21,39 @@ if (listingSizeButton) listingSizeButton.textContent = 'Size My Interter';
 
 // Share the complete product navigation across landing and detail pages.
 const siteRoot = new URL('../', document.currentScript.src);
+
+// Vite and some static preview servers return the home document for unknown
+// paths. Route those fallback responses to the themed 404 page.
+const knownSiteRoutes = new Set([
+  '',
+  '404.html',
+  'home-inverters',
+  'home-inverters/sino-series',
+  'home-inverters/electro-series',
+  'home-inverters/omega-series',
+  'home-inverters/sigma-series',
+  'home-inverters/sinospark-series',
+  'home-inverters/wattrix-series',
+  'inverter-batteries',
+  'inverter-batteries/regular-series',
+  'inverter-batteries/smart-series',
+  'inverter-batteries/citimax-series',
+  'lithtec-combo',
+  'lithtec-combo/complete-combo',
+  'lithtec-combo/lithium-battery',
+  'lithtec-combo/sine-wave-home-ups',
+  'lithtec-combo/square-wave-home-ups',
+  'load-calculator',
+  'partner-with-us',
+  'pages',
+]);
+const sitePath = decodeURIComponent(window.location.pathname)
+  .slice(siteRoot.pathname.length)
+  .replace(/^\/+|\/+$/g, '')
+  .replace(/(^|\/)index\.html$/i, '');
+if (!knownSiteRoutes.has(sitePath) && document.body.matches(':not(.error-page)')) {
+  window.location.replace(new URL('404.html', siteRoot).href);
+}
 const productMenus = [
   { label: 'Home Inverters', path: 'home-inverters/', entries: [
     ['Sino Series', 'home-inverters/sino-series/'],
