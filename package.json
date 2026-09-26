@@ -8,7 +8,7 @@
   "build": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --minify",
   "dev": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --watch",
   "images:convert": "node scripts/convert-images.js",
-  "serve": "vite",
+  "serve": "vite --host 127.0.0.1 --port 5500 --strictPort",
     "deploy": "npm run build && gh-pages -d ."
   },
   "keywords": [],
