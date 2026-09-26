@@ -98,6 +98,18 @@
   background-repeat: no-repeat;
 }
 
+@media (max-width: 767px) {
+  .home-calculator-section {
+    padding-bottom: calc(100vw + 20px) !important;
+    background-image:
+      linear-gradient(to bottom, #0e3874 0%, rgba(14,56,116,.88) 8%, rgba(14,56,116,0) 30%),
+      url('../images/home-load-calculator-bg-mobile.png');
+    background-position: center bottom, center bottom;
+    background-size: 100% 100vw, 100% auto;
+    background-repeat: no-repeat;
+  }
+}
+
 @media (min-width: 1024px) {
   .home-calculator-visual { justify-content: flex-end; }
   .home-calculator-image { width: 650px; max-width: none; flex: 0 0 650px; }
