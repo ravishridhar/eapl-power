@@ -92,7 +92,7 @@
 .home-calculator-image { width: 100%; max-width: 650px; }
 .home-calculator-section {
   background-color: #0e3874;
-  background-image: url('../images/load-calculator-banner-bg.webp');
+  background-image: url('../images/load-calculator-banner-bg-compressed.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -103,7 +103,7 @@
     padding-bottom: calc(100vw + 20px) !important;
     background-image:
       linear-gradient(to bottom, #0e3874 0%, rgba(14,56,116,.88) 8%, rgba(14,56,116,0) 30%),
-      url('../images/home-load-calculator-bg-mobile.webp');
+      url('../images/home-load-calculator-bg-mobile-compressed.webp');
     background-position: center bottom, center bottom;
     background-size: 100% 100vw, 100% auto;
     background-repeat: no-repeat;

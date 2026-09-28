@@ -1,6 +1,6 @@
 .partner-page { overflow-x: hidden; color: #0a2e63; background: #fff; }
 .partner-hero { position: relative; min-height: 720px; overflow: hidden; color: #fff; background: #061a3a; }
-.partner-hero::before { position: absolute; top: 0; right: 0; bottom: 0; width: 63%; content: ''; background: url('../images/partner/dealer-bg.webp') 68% center/cover no-repeat; }
+.partner-hero::before { position: absolute; top: 0; right: 0; bottom: 0; width: 63%; content: ''; background: url('../images/partner/dealer-bg-compressed.webp') 68% center/cover no-repeat; }
 .partner-hero::after { position: absolute; inset: 0; content: ''; background: linear-gradient(90deg,#061a3a 0%,#061a3a 42%,rgba(6,26,58,.96) 50%,rgba(6,26,58,.52) 70%,rgba(6,26,58,.12)); }
 .partner-hero-inner { position: relative; z-index: 1; padding-top: 165px; }
 .partner-breadcrumb { display: flex; align-items: center; gap: 12px; color: #9db0cc; font-size: 11px; letter-spacing: .6px; }
