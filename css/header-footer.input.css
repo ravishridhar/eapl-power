@@ -161,6 +161,8 @@
 .nav-item:hover .nav-dropdown, .nav-item:focus-within .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .nav-dropdown a { display: block; padding: 12px 13px; border-radius: 4px; color: rgba(255,255,255,.82); letter-spacing: .3px; }
 .nav-dropdown a:hover { color: #0a2e63; background: #ffc727; }
+/* Keep the final desktop dropdown inside the viewport at narrower widths. */
+.nav-item:last-child .nav-dropdown { left: auto; right: 0; }
 .mobile-overlay { position: fixed; z-index: 70; inset: 0; background: rgba(5,13,26,.62); backdrop-filter: blur(3px); opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s; }
 .mobile-overlay.is-open { opacity: 1; visibility: visible; }
 .mobile-sidebar { position: fixed; z-index: 80; top: 0; right: 0; display: flex; flex-direction: column; width: min(330px, 92vw); height: 100dvh; color: white; background: linear-gradient(180deg,rgba(9,32,68,.98),rgba(14,56,116,.96)); box-shadow: -18px 0 42px rgba(5,13,26,.35); transform: translateX(105%); transition: transform .32s ease; }
