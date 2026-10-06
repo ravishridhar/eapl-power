@@ -4,14 +4,15 @@
   "description": "",
   "main": "js/main.js",
   "scripts": {
-  "prebuild": "npm run images:convert && npm run images:compress && npm run sitemap:generate",
-  "build": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --minify",
-  "dev": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --watch",
-  "images:convert": "node scripts/convert-images.js",
-  "images:compress": "node scripts/compress-images.js",
-  "sitemap:generate": "node scripts/generate-sitemap.js",
-  "serve": "vite --host 127.0.0.1 --port 5500 --strictPort",
-    "deploy": "npm run build && gh-pages -d ."
+    "prebuild": "npm run images:convert && npm run images:compress && npm run sitemap:generate",
+    "build": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --minify",
+    "dev": "npx @tailwindcss/cli -i ./css/header-footer.input.css -o ./css/header-footer.css --watch",
+    "images:convert": "node scripts/convert-images.js",
+    "images:compress": "node scripts/compress-images.js",
+    "sitemap:generate": "node scripts/generate-sitemap.js",
+    "serve": "node scripts/serve-php.js",
+    "deploy": "npm run build && gh-pages -d .",
+    "serve:static": "vite --host 127.0.0.1 --port 5500 --strictPort"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@php-wasm/cli": "^3.1.57",
     "gh-pages": "^6.3.0",
     "sharp": "^0.35.4",
     "vite": "^8.3.0"
