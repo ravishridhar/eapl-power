@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "^(mail-lib\.php|calculator-data\.json)$">
+  Require all denied
+</FilesMatch>
