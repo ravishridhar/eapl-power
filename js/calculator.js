@@ -145,34 +145,32 @@ document.querySelector('#calculatorForm').addEventListener('submit', async (even
   const form = event.currentTarget;
   const status = document.querySelector('#calculatorStatus');
   const button = form.querySelector('[type="submit"]');
+  if (!window.validateEaplEnquiryForm(form) || button.disabled) return;
+  if (!currentLoad.items.length) {
+    status.textContent = 'Add at least one appliance before sending your result.';
+    document.querySelector('.appliance-panel').scrollIntoView({ block: 'start' });
+    document.querySelector('.category-tabs .active').focus({ preventScroll: true });
+    return;
+  }
   const buttonLabel = button.textContent;
   button.disabled = true;
   button.textContent = 'Sending…';
   status.textContent = 'Sending your calculator result…';
   try {
     await window.sendEaplFormEmail(form, {
-      source: 'Load calculator enquiry',
-      extra: {
-        calculatedLoad: document.querySelector('#formLoad').textContent,
-        vaRequired: document.querySelector('#formVa').textContent,
-        backupTime: document.querySelector('#formHours').textContent,
-        waveform: document.querySelector('#formWave').textContent,
-        selectedAppliances: currentLoad.items.map(item => `${item.name} × ${item.qty} (${item.total} W)`).join(', '),
-        recommendedHomeUps: currentRecommendation.inverter?.name || 'No matching Home UPS',
-        recommendedBattery: currentRecommendation.battery ? `${currentRecommendation.batteryCount} × ${currentRecommendation.battery.name}` : 'No matching battery',
-        requiredBatteryAh: currentRecommendation.requiredAh,
-        estimatedBackupHours: currentRecommendation.achievedBackupHours,
-        batteryPreference: document.querySelector('#formBattery').textContent,
+      selection: {
+        quantities: Object.fromEntries([...allApplianceCards].map(card => [card.dataset.id, Number(card.querySelector('output').value || 0)])),
+        hours: Number(hoursInput.value),
+        wave: document.querySelector('[name="wave"]:checked').value,
+        battery: document.querySelector('[name="battery"]:checked').value,
       },
     });
-    status.textContent = 'Thank you. Your calculator result has been sent successfully.';
+    status.textContent = 'Thank you. Your calculator result has been accepted for sending.';
     form.reset();
     updateCalculator();
   } catch (error) {
     console.error('Email submission failed:', error);
-    status.textContent = error.message === 'Email service is not configured yet.'
-      ? 'Email service details need to be added before this form can send.'
-      : 'We could not send your result. Please try again.';
+    status.textContent = error.message || 'We could not send your result. Please try again.';
   } finally {
     button.disabled = false;
     button.textContent = buttonLabel;

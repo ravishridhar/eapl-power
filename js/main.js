@@ -195,46 +195,116 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setMobileMenu(false);
 });
 
-const sendEaplFormEmail = async (form, { source, extra = {} } = {}) => {
-  const config = window.EAPL_EMAIL_CONFIG;
-  const requiredConfig = [config?.serviceId, config?.templateId, config?.publicKey];
-  if (!config || requiredConfig.some((value) => !value || value.startsWith('YOUR_'))) {
-    throw new Error('Email service is not configured yet.');
+const captchaChallenges = new WeakMap();
+const refreshEnquiryCaptcha = async (form) => {
+  const field = form.querySelector('[data-captcha-answer]');
+  const refresh = form.querySelector('.captcha-refresh');
+  const state = {};
+  captchaChallenges.set(field, state);
+  field.value = '';
+  field.disabled = true;
+  field.setCustomValidity('Verification is loading. Please wait.');
+  field.removeAttribute('aria-invalid');
+  refresh.disabled = true;
+  form.querySelector('.captcha-question').textContent = 'Loading…';
+  form.querySelector('.captcha-status').textContent = '';
+  try {
+    const response = await fetch(window.EAPL_EMAIL_CONFIG.captchaUrl, { credentials: 'same-origin', cache: 'no-store' });
+    const challenge = await response.json();
+    if (!response.ok || typeof challenge.token !== 'string' || typeof challenge.question !== 'string') throw new Error('Verification unavailable');
+    if (captchaChallenges.get(field) !== state) return;
+    state.token = challenge.token;
+    form.querySelector('.captcha-question').textContent = challenge.question;
+    field.setCustomValidity('Please answer the verification question.');
+  } catch {
+    if (captchaChallenges.get(field) !== state) return;
+    form.querySelector('.captcha-question').textContent = 'Try again';
+    form.querySelector('.captcha-status').textContent = 'Could not load verification. Tap refresh to retry.';
+  } finally {
+    if (captchaChallenges.get(field) === state) {
+      field.disabled = false;
+      refresh.disabled = false;
+    }
   }
-
-  const formValues = Object.fromEntries(new FormData(form).entries());
-  const submittedValues = { ...formValues, ...extra };
-  const message = Object.entries(submittedValues)
-    .map(([key, value]) => `${key.replace(/([A-Z])/g, ' $1').replace(/^./, (letter) => letter.toUpperCase())}: ${value || '—'}`)
-    .join('\n');
-
-  const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      service_id: config.serviceId,
-      template_id: config.templateId,
-      user_id: config.publicKey,
-      template_params: {
-        to_email: config.toEmail,
-        from_email: config.fromEmail,
-        reply_to: formValues.email || config.fromEmail,
-        subject: `EAPL website enquiry — ${source}`,
-        form_source: source,
-        message,
-        ...submittedValues,
-      },
-    }),
-  });
-
-  if (!response.ok) throw new Error((await response.text()) || 'Unable to send email.');
 };
-
+const sendEaplFormEmail = async (form, { selection } = {}) => {
+  const field = form.querySelector('[data-captcha-answer]');
+  const challenge = captchaChallenges.get(field);
+  if (!challenge?.token) throw new Error('Please refresh the verification question and try again.');
+  const response = await fetch(window.EAPL_EMAIL_CONFIG.submitUrl, {
+    method: 'POST', credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ form: form.id, fields: Object.fromEntries(new FormData(form).entries()), selection,
+      captcha: { token: challenge.token, answer: field.value.trim() } }),
+  });
+  let result;
+  try { result = await response.json(); } catch { throw new Error('The enquiry service is unavailable. Please try again shortly.'); }
+  if (!response.ok) {
+    if (result.code === 'captcha_incorrect') {
+      field.setCustomValidity(result.message);
+      field.setAttribute('aria-invalid', 'true');
+      form.querySelector('.captcha-status').textContent = result.message;
+      field.focus();
+    } else if (result.code === 'captcha_expired' || result.code === 'mail_unavailable') {
+      await refreshEnquiryCaptcha(form);
+    }
+    throw new Error(result.message || 'Unable to send your enquiry. Please try again.');
+  }
+};
 window.sendEaplFormEmail = sendEaplFormEmail;
+
+// Share validation between all three enquiry forms.
+const validateEnquiryField = (field) => {
+  field.setCustomValidity('');
+  const value = field.value.trim();
+  if (field.matches('[data-captcha-answer]')) {
+    const ready = !!captchaChallenges.get(field)?.token;
+    const validFormat = /^[0-9]{1,2}$/.test(value);
+    field.setCustomValidity(!ready ? 'Please refresh verification and try again.' : validFormat ? '' : 'Please enter the answer to the verification question.');
+    field.setAttribute('aria-invalid', String(!ready || !validFormat));
+    field.closest('form').querySelector('.captcha-status').textContent = value && !validFormat ? 'Enter a number.' : '';
+  } else if (field.required && !value) {
+    field.setCustomValidity('Please complete this field.');
+  } else if (value && ['phone', 'mobile'].includes(field.name) && !/^[0-9]{10}$/.test(value)) {
+    field.setCustomValidity('Enter a 10-digit mobile number.');
+  } else if (value && ['pincode', 'pin'].includes(field.name) && !/^[1-9][0-9]{5}$/.test(value)) {
+    field.setCustomValidity('Enter a 6-digit PIN code that does not start with zero.');
+  } else if (value && ['name', 'district', 'city'].includes(field.name) && !/\p{L}/u.test(value)) {
+    field.setCustomValidity('Enter a name containing letters.');
+  }
+};
+const validateEnquiryForm = (form) => {
+  form.querySelectorAll('input, select, textarea').forEach(field => {
+    field.value = field.value.trim();
+    validateEnquiryField(field);
+  });
+  return form.reportValidity();
+};
+window.validateEaplEnquiryForm = validateEnquiryForm;
+document.querySelectorAll('#enquiryForm, #calculatorForm, #partnerForm').forEach(form => {
+  refreshEnquiryCaptcha(form);
+  form.querySelector('.captcha-refresh').addEventListener('click', () => {
+    refreshEnquiryCaptcha(form);
+    form.querySelector('[data-captcha-answer]').focus();
+  });
+  form.querySelectorAll('input, select, textarea').forEach(field => {
+    field.addEventListener('input', () => validateEnquiryField(field));
+    field.addEventListener('change', () => validateEnquiryField(field));
+    field.addEventListener('blur', () => {
+      field.value = field.value.trim();
+      validateEnquiryField(field);
+    });
+  });
+  form.addEventListener('reset', () => {
+    form.querySelectorAll('input, select, textarea').forEach(field => field.setCustomValidity(''));
+    refreshEnquiryCaptcha(form);
+  });
+});
 
 document.querySelector('#enquiryForm')?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
+  if (!validateEnquiryForm(form) || form.querySelector('[type="submit"]').disabled) return;
   const status = document.querySelector('#formStatus');
   status.classList.remove('hidden');
   const button = form.querySelector('[type="submit"]');
@@ -244,13 +314,11 @@ document.querySelector('#enquiryForm')?.addEventListener('submit', async (event)
   status.textContent = 'Sending your enquiry…';
   try {
     await sendEaplFormEmail(form, { source: 'Home enquiry form' });
-    status.textContent = 'Thank you. Your enquiry has been sent successfully.';
+    status.textContent = 'Thank you. Your enquiry has been accepted for sending.';
     form.reset();
   } catch (error) {
     console.error('Email submission failed:', error);
-    status.textContent = error.message === 'Email service is not configured yet.'
-      ? 'Email service details need to be added before this form can send.'
-      : 'We could not send your enquiry. Please try again.';
+    status.textContent = error.message || 'We could not send your enquiry. Please try again.';
   } finally {
     button.disabled = false;
     button.textContent = buttonLabel;
@@ -260,6 +328,7 @@ document.querySelector('#enquiryForm')?.addEventListener('submit', async (event)
 document.querySelector('#partnerForm')?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
+  if (!validateEnquiryForm(form) || form.querySelector('[type="submit"]').disabled) return;
   const status = document.querySelector('#partnerFormStatus');
   const button = form.querySelector('[type="submit"]');
   const buttonLabel = button.textContent;
@@ -268,13 +337,11 @@ document.querySelector('#partnerForm')?.addEventListener('submit', async (event)
   status.textContent = 'Sending your application…';
   try {
     await sendEaplFormEmail(form, { source: 'Partner application form' });
-    status.textContent = 'Thank you. Your partner application has been sent successfully.';
+    status.textContent = 'Thank you. Your partner application has been accepted for sending.';
     form.reset();
   } catch (error) {
     console.error('Email submission failed:', error);
-    status.textContent = error.message === 'Email service is not configured yet.'
-      ? 'Email service details need to be added before this form can send.'
-      : 'We could not send your application. Please try again.';
+    status.textContent = error.message || 'We could not send your application. Please try again.';
   } finally {
     button.disabled = false;
     button.textContent = buttonLabel;
