@@ -11,7 +11,7 @@
     "images:compress": "node scripts/compress-images.js",
     "sitemap:generate": "node scripts/generate-sitemap.js",
     "serve": "node scripts/serve-php.js",
-    "deploy": "npm run build && gh-pages -d .",
+    "deploy": "npm run build && gh-pages -d . --exclude \"pages/**\"",
     "serve:static": "vite --host 127.0.0.1 --port 5500 --strictPort"
   },
   "keywords": [],

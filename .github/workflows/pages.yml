@@ -27,10 +27,12 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Prepare public site
+        run: rsync -a --exclude='/pages/' --exclude='/live-files/' --exclude='/node_modules/' --exclude='/.git/' --exclude='/.github/' --exclude='/_site/' ./ ./_site/
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4

@@ -3,7 +3,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const domain = 'https://eastmanpowersolutions.in';
-const excludedRoots = new Set(['node_modules', '.git', 'dist', 'live-files']);
+const excludedRoots = new Set(['node_modules', '.git', 'dist', 'live-files', '_site']);
 const excludedRoutes = new Set(['pages']);
 
 function collectPages(directory, relative = '') {

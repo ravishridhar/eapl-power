@@ -1,1 +1,4 @@
 ErrorDocument 404 /404.html
+RewriteEngine On
+# The page directory is for local development only.
+RewriteRule ^pages(?:/|$) - [R=404,L]
