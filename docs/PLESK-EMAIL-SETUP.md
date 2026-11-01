@@ -10,8 +10,10 @@ All three forms (contact, Load Calculator, Partner With Us) use our own PHP endp
 | Port | `465` |
 | Encryption | Implicit TLS (SMTPS) |
 | Username / From | `no-reply@eastmanpowersolutions.in` |
-| To | `marketing@eaplworld.com` |
+| To (temporary testing) | `ravishridhar1@gmail.com` |
 | Reply-To | Visitor's validated email address |
+
+The recipient is temporarily set to `ravishridhar1@gmail.com` for testing. Before production, change both the `To:` header and `CURLOPT_MAIL_RCPT` in `api/mail-lib.php` back to `marketing@eaplworld.com`.
 
 These addresses and connection settings are fixed in `api/mail-lib.php`. Visitors cannot change the sender or recipient. The mailbox password is stored only in the private server configuration.
 
@@ -43,7 +45,7 @@ In Plesk, ensure mail is enabled for this domain and check SPF and DKIM signing.
 - The API permits 10 submission attempts per IP per 15 minutes and 60 captcha requests per 10 minutes. It ignores visitor-controlled forwarded-IP headers. If Plesk is behind a proxy, configure trusted real-client-IP handling at the web server.
 - Required fields, field sizes, phone/PIN/email formats, and dropdown values are validated again on the server. Only supported fields are mailed. The calculator backend calculates load/product results from appliance IDs and quantities; browser-provided recommendation text is not trusted. Its data snapshot is `api/calculator-data.json`: update it alongside `js/calculator-data.js` whenever product data changes.
 - Mathematical verification is basic spam friction, not complete bot protection. Server verification and rate limiting prevent simply bypassing the browser checks, but automated programs can still solve arithmetic.
-- Missing configuration or a SMTP error returns a generic failure to visitors. Logs contain exception classes only, never passwords or enquiry contents. Check the configuration, mailbox password, authentication settings, TLS certificate, outbound port 465 access, sessions and PHP error logs.
+- Missing configuration or a SMTP error returns a generic failure to visitors. Logs contain fixed diagnostic labels or exception classes, never passwords or enquiry contents. In Plesk → Logs, search for `EAPL mail:`. `CONFIG_MISSING_OR_UNREADABLE` means the private file is absent, not readable, or restricted by `open_basedir`; `SMTP_PASSWORD_MISSING` means the password is empty or still a placeholder; `PHP_SMTPS_UNAVAILABLE` means the PHP cURL build lacks SMTP support; `SMTP_AUTHENTICATION_FAILED` means the mailbox login was rejected; `SMTP_CERTIFICATE_FAILED` means the mail-server certificate could not be verified; connection/timeout labels mean PHP could not reach port 465. Check the configuration, mailbox password, authentication settings, TLS certificate, outbound port 465 access, sessions and PHP error logs.
 - SMTP acceptance means the server queued the email, not that delivery to Marketing is confirmed. Check Marketing's inbox/spam and Plesk's mail logs. SMTP sending does not normally create a Sent Items copy. Do not automatically retry uncertain sends, as that can duplicate emails.
 
 ## Local checks

@@ -33,7 +33,7 @@ try {
 } catch (InvalidArgumentException $error) {
     respond(422, ['message' => $error->getMessage()]);
 } catch (Throwable $error) {
-    // Never expose SMTP responses, credentials or enquiry contents to visitors/logs.
-    error_log('EAPL mail: ' . get_class($error));
+    // Fixed diagnostic labels only; never log SMTP responses or submitted details.
+    error_log('EAPL mail: ' . safeMailDiagnostic($error));
     respond(503, ['code' => 'mail_unavailable', 'message' => 'We could not send your enquiry. Please try again shortly.']);
 }

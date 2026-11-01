@@ -136,12 +136,26 @@ function calculatorResult(array $selection): array {
     return $result;
 }
 
+class MailSetupException extends RuntimeException {}
+
+function safeMailDiagnostic(Throwable $error): string {
+    if ($error instanceof MailSetupException) return $error->getMessage();
+    $detail = get_class($error);
+    // Only extract function/constant identifiers, never arbitrary exception text.
+    if (preg_match('/Undefined constant "([A-Za-z_][A-Za-z0-9_]*)"/', $error->getMessage(), $match)) {
+        $detail .= ' UNDEFINED_CONSTANT=' . $match[1];
+    } elseif (preg_match('/Call to undefined function ([A-Za-z_][A-Za-z0-9_]*)\(/', $error->getMessage(), $match)) {
+        $detail .= ' UNDEFINED_FUNCTION=' . $match[1];
+    }
+    return $detail . ' file=' . basename($error->getFile()) . ' line=' . $error->getLine();
+}
+
 function mailConfig(): array {
     // Site lives in DOMAIN/httpdocs/web; config lives in DOMAIN/private.
     $path = getenv('EAPL_MAIL_CONFIG') ?: dirname(__DIR__, 3) . '/private/eapl-mail-config.php';
-    if (!is_file($path)) throw new RuntimeException('Mail configuration missing');
+    if (!is_file($path) || !is_readable($path)) throw new MailSetupException('CONFIG_MISSING_OR_UNREADABLE');
     $config = require $path;
-    if (!is_array($config) || !is_string($config['smtpPassword'] ?? null) || $config['smtpPassword'] === '' || $config['smtpPassword'] === 'YOUR_MAILBOX_PASSWORD') throw new RuntimeException('SMTP password not configured');
+    if (!is_array($config) || !is_string($config['smtpPassword'] ?? null) || $config['smtpPassword'] === '' || $config['smtpPassword'] === 'YOUR_MAILBOX_PASSWORD') throw new MailSetupException('SMTP_PASSWORD_MISSING');
     return $config;
 }
 
@@ -156,7 +170,7 @@ function buildEnquiryMessage(string $source, array $fields): string {
     $headers = [
         'Date: ' . gmdate('D, d M Y H:i:s O'),
         'From: Eastman Website <no-reply@eastmanpowersolutions.in>',
-        'To: marketing@eaplworld.com',
+        'To: ravishridhar1@gmail.com',
         'Reply-To: ' . $replyTo,
         'Subject: ' . $subject,
         'Message-ID: <' . bin2hex(random_bytes(16)) . '@eastmanpowersolutions.in>',
@@ -169,7 +183,7 @@ function buildEnquiryMessage(string $source, array $fields): string {
 
 function deliverEnquiry(string $source, array $fields): void {
     $config = mailConfig();
-    if (!function_exists('curl_init') || !in_array('smtps', curl_version()['protocols'], true)) throw new RuntimeException('PHP cURL SMTPS support is required');
+    if (!function_exists('curl_init') || !in_array('smtps', curl_version()['protocols'], true)) throw new MailSetupException('PHP_SMTPS_UNAVAILABLE');
     $message = buildEnquiryMessage($source, $fields);
     $stream = fopen('php://temp', 'w+');
     if (!$stream) throw new RuntimeException('Mail buffer unavailable');
@@ -180,7 +194,7 @@ function deliverEnquiry(string $source, array $fields): void {
             CURLOPT_USERNAME => 'no-reply@eastmanpowersolutions.in',
             CURLOPT_PASSWORD => $config['smtpPassword'],
             CURLOPT_MAIL_FROM => 'no-reply@eastmanpowersolutions.in',
-            CURLOPT_MAIL_RCPT => ['marketing@eaplworld.com'],
+            CURLOPT_MAIL_RCPT => ['ravishridhar1@gmail.com'],
             CURLOPT_UPLOAD => true,
             CURLOPT_INFILE => $stream,
             CURLOPT_INFILESIZE => strlen($message),
@@ -191,8 +205,12 @@ function deliverEnquiry(string $source, array $fields): void {
             CURLOPT_SSL_VERIFYHOST => 2,
         ]);
         $response = curl_exec($curl);
-        $status = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
-        if ($response === false || $status < 200 || $status >= 300) throw new RuntimeException('SMTP delivery failed');
+        $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($response === false || $status < 200 || $status >= 300) {
+            $codes = [1 => 'PHP_SMTPS_UNAVAILABLE', 6 => 'SMTP_DNS_FAILED', 7 => 'SMTP_CONNECTION_FAILED', 28 => 'SMTP_TIMEOUT', 35 => 'SMTP_TLS_FAILED', 60 => 'SMTP_CERTIFICATE_FAILED', 67 => 'SMTP_AUTHENTICATION_FAILED'];
+            // Numeric SMTP status and fixed labels are safe; never log curl_error().
+            throw new MailSetupException(($codes[curl_errno($curl)] ?? 'SMTP_REJECTED') . ' smtp_status=' . $status);
+        }
     } finally {
         curl_close($curl);
         fclose($stream);
