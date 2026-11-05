@@ -125,3 +125,9 @@
     min-height: calc(min(45vw,720px) - 134.4px);
   }
 }
+
+/* Match the full-bleed image treatment of the other homepage slides. */
+.hero-slide-automotive { background: #204c91; }
+.hero-automotive-link { position: absolute; inset: 0; display: block; }
+.hero-automotive-link img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-automotive-link:focus-visible { outline: 3px solid #ffc727; outline-offset: -3px; }
