@@ -27,6 +27,11 @@ const siteRoot = new URL('../', document.currentScript.src);
 const knownSiteRoutes = new Set([
   '',
   '404.html',
+  'automotive',
+  'automotive/passenger-car-batteries',
+  'automotive/tractor-batteries',
+  'automotive/heavy-commercial-vehicle-batteries',
+
   'home-inverters',
   'home-inverters/sino-series',
   'home-inverters/electro-series',
@@ -55,6 +60,11 @@ if (!knownSiteRoutes.has(sitePath) && document.body.matches(':not(.error-page)')
   window.location.replace(new URL('404.html', siteRoot).href);
 }
 const productMenus = [
+  { label: 'Automotive', path: 'automotive/', entries: [
+    ['Passenger Car Batteries', 'automotive/passenger-car-batteries/'],
+    ['Tractor Batteries', 'automotive/tractor-batteries/'],
+    ['Heavy Commercial Vehicle Batteries', 'automotive/heavy-commercial-vehicle-batteries/'],
+  ] },
   { label: 'Home Inverters', path: 'home-inverters/', entries: [
     ['Sino Series', 'home-inverters/sino-series/'],
     ['Electro Series', 'home-inverters/electro-series/'],
