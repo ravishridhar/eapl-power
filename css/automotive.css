@@ -84,3 +84,24 @@
 .automotive-page .automotive-product-visual img {
  width: 100%; height: 100%; object-fit: cover; object-position: right center;
 }
+
+/* Match the Home Inverters category hero height and image coverage. */
+.listing-page.automotive-page .auto-image-hero {
+ position: relative;
+ height: 784px;
+ overflow: hidden;
+}
+.listing-page.automotive-page .auto-image-hero > img {
+ position: absolute;
+ inset: 0;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ object-position: center;
+}
+@media (min-width: 1024px) {
+ .listing-page.automotive-page .auto-image-hero {
+  height: 100vh;
+  height: 100svh;
+ }
+}
