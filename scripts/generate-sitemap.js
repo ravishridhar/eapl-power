@@ -23,7 +23,7 @@ function collectPages(directory, relative = '') {
 
 function priority(route) {
   if (!route) return '1.0';
-  if (['home-inverters', 'inverter-batteries', 'lithtec-combo'].includes(route)) return '0.9';
+  if (['home-inverters', 'inverter-batteries', 'lithtec-combo', 'automotive'].includes(route)) return '0.9';
   if (route === 'load-calculator' || route === 'partner-with-us') return '0.7';
   return '0.8';
 }
