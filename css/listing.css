@@ -68,3 +68,10 @@
 @media (max-width: 359px) {
   .listing-page .listing-hero { height: 780px; background-position: center 280px; }
 }
+
+/* Share the inverter brand artwork across category headers. */
+.listing-page .listing-hero .category-brand-tagline { margin-top: 58px; width: 220px; }
+.category-brand-tagline img { display: block; width: 100%; height: auto; }
+@media(max-width:1023px) {
+ .listing-page .listing-hero .category-brand-tagline { margin-top: 34px; width: 190px; }
+}
