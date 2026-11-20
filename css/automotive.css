@@ -145,3 +145,54 @@ body.listing-page.automotive-page .automotive-overview {
   mask-image: linear-gradient(180deg,transparent 0%,#000 18%);
  }
 }
+
+/* Keep every desktop hero element inside the available viewport height. */
+@media(min-width:1024px) {
+ body.listing-page.automotive-page .automotive-hero {
+  height: 100svh !important;
+  min-height: 100svh !important;
+  background-size: 100% 100%,100% 100%,auto 100% !important;
+  background-position: center,center,top center !important;
+ }
+ body.listing-page.automotive-page .automotive-overview {
+  background-size: cover !important;
+  background-position: center !important;
+ }
+ .listing-page .automotive-hero .listing-hero-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 175px;
+  padding-bottom: 32px;
+  transform: none;
+ }
+ .listing-page .automotive-hero .listing-hero-content > div:last-child {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  width: 48%;
+  margin-top: 24px;
+ }
+ .listing-page .automotive-hero h1 {
+  width: 100%;
+  font-size: clamp(32px,min(5vw,9svh),72px);
+  line-height: 1.12;
+ }
+ .listing-page .automotive-hero h1 + .automotive-vehicle {
+  margin-top: clamp(12px,3svh,30px);
+  padding-top: clamp(12px,2.5svh,25px);
+  font-size: clamp(22px,4svh,32px);
+ }
+ .listing-page .automotive-hero .category-brand-tagline {
+  flex: none;
+  margin-top: clamp(20px,5svh,58px);
+ }
+ .automotive-overview h1::after { margin-top: clamp(12px,3svh,32px); }
+ .automotive-battery-hero .automotive-hero-product {
+  top: calc(50% + 65px);
+  transform: translateY(-50%);
+  max-height: calc(100% - 230px);
+ }
+}
