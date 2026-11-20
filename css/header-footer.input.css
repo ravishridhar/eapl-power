@@ -409,3 +409,54 @@ body .merged-header ~ main > section:first-child { margin-top: -142px !important
   body .listing-hero-content,
   body .calculator-hero-inner { transform: translateY(44px); }
 }
+
+/* Desktop hero copy fits the viewport below navigation without fixed top offsets. */
+@media(min-width:1024px) {
+ body.listing-page .listing-hero:not(.automotive-hero),
+ body.product-detail-page .detail-hero,
+ body.product-detail-page .detail-hero .detail-hero-inner {
+  min-height: max(540px,100svh) !important;
+  height: max(540px,100svh) !important;
+ }
+ body.listing-page .listing-hero:not(.automotive-hero) .listing-hero-content,
+ body.product-detail-page .detail-hero .detail-hero-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 175px !important;
+  padding-bottom: 40px;
+  transform: none;
+ }
+ body.listing-page .listing-hero:not(.automotive-hero) .listing-hero-content > div:last-child,
+ body.product-detail-page .detail-hero .detail-hero-inner .detail-hero-copy {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  width: min(579px,52%);
+  max-width: 100%;
+  margin-top: 24px;
+  transform: none;
+ }
+ body.listing-page .listing-hero:not(.automotive-hero) h1,
+ body.product-detail-page .detail-hero .detail-hero-copy h1 {
+  width: auto;
+  max-width: 100%;
+  white-space: normal;
+  font-size: clamp(36px,min(4.5vw,8svh),64px);
+  line-height: 1.12;
+ }
+ body.product-detail-page .detail-hero .detail-hero-copy > span {
+  max-width: 100%;
+  padding-top: clamp(12px,2.5svh,20px);
+  font-size: clamp(22px,4svh,32px);
+  line-height: 1.15;
+ }
+ body.listing-page .listing-hero:not(.automotive-hero) .category-brand-tagline,
+ body.product-detail-page .detail-hero .detail-hero-copy .wise-choice {
+  flex: none;
+  margin-top: clamp(24px,5svh,58px);
+ }
+}

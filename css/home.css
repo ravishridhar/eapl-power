@@ -137,3 +137,45 @@
  .hero-slide-automotive > picture { left: 0; top: 32%; }
  .hero-slide-automotive::after { background: linear-gradient(180deg,#0e3670 15%,rgba(14,54,112,.8) 35%,transparent 65%); }
 }
+
+/* Keep slide copy together rather than positioning the brand mark independently. */
+.hero-swiper, .hero-swiper .swiper-slide { min-height: 540px; }
+.hero-slide:not(.hero-slide-wise) .hero-copy {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ justify-content: center;
+ height: 100%;
+ padding-top: 170px;
+ padding-bottom: 110px;
+}
+.hero-slide:not(.hero-slide-wise) .hero-tagline {
+ position: static;
+ margin-top: clamp(24px,5svh,56px);
+}
+.hero-slide:not(.hero-slide-wise) .hero-title {
+ max-width: 52%;
+ font-size: clamp(30px,min(3vw,6svh),44px);
+}
+.hero-slide:not(.hero-slide-wise) .hero-promise {
+ margin-top: clamp(18px,3.5svh,30px);
+ padding: 10px clamp(20px,3vw,48px);
+ font-size: clamp(16px,1.35vw,19.2px);
+}
+@media(max-width:1023px) {
+ .hero-swiper, .hero-swiper .swiper-slide { min-height: 600px; }
+ .hero-slide:not(.hero-slide-wise) .hero-copy {
+  padding-top: 150px;
+  padding-bottom: 100px;
+  justify-content: flex-start;
+ }
+ .hero-slide:not(.hero-slide-wise) .hero-title {
+  max-width: 100%;
+  font-size: clamp(24px,5.664vw,38.4px);
+ }
+ .hero-slide:not(.hero-slide-wise) .hero-promise {
+  font-size: clamp(12px,3.33vw,19.2px);
+  white-space: normal;
+ }
+ .hero-slide:not(.hero-slide-wise) .hero-tagline { margin-top: 24px; }
+}
