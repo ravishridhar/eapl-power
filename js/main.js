@@ -61,7 +61,7 @@ if (!knownSiteRoutes.has(sitePath) && document.body.matches(':not(.error-page)')
 }
 const productMenus = [
   { label: 'Automotive', path: 'automotive/', entries: [
-    ['Passenger Car Batteries', 'automotive/passenger-car-batteries/'],
+    // Temporarily hidden: ['Passenger Car Batteries', 'automotive/passenger-car-batteries/'],
     ['Tractor Batteries', 'automotive/tractor-batteries/'],
     ['Heavy Commercial Vehicle Batteries', 'automotive/heavy-commercial-vehicle-batteries/'],
   ] },
