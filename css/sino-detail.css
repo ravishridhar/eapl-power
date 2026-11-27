@@ -25,10 +25,7 @@
 .sino-mobile-contact { display: none; }
 .sino-page .benefit-grid { scroll-snap-type: x mandatory; }
 .sino-page .benefit-grid article { scroll-snap-align: start; }
-.sino-page .benefit-pagination button { width: 26px; height: 20px; border: 0; background: linear-gradient(rgba(255,255,255,.35),rgba(255,255,255,.35)) center/100% 2px no-repeat; cursor: pointer; }
-.sino-page .benefit-pagination button.active { background-image: linear-gradient(#ffd966,#ffd966); }
 .sino-page :focus-visible { outline: 2px solid #db5b13; outline-offset: 4px; }
-.sino-page .benefit-arrows button:disabled { opacity: .35; cursor: default; }
 .sino-page .download-grid span { white-space: normal; }
 @media (min-width: 1024px) and (max-width: 1399px) {
   .sino-page .nav-glass > .wrap { padding-inline: 30px; justify-content: space-between; }
@@ -76,8 +73,8 @@
   .sino-page .feature-grid article { min-height: 362px; padding: 30px 30px 40px; }
   .sino-page .feature-grid h4 { margin-top: 30px; }
   .sino-page .benefits { height: auto; padding: 22.4px 0; }
-  .sino-page .benefit-grid { width: calc(100% + 15px); margin-top: 22.4px; gap: 30px; padding-right: 15px; }
-  .sino-page .benefit-grid article { width: 295px; flex-basis: 295px; height: 244px; padding: 30px; }
+  .sino-page .benefit-grid { margin-top: 22.4px; }
+  .sino-page .benefit-grid article { padding: 30px; }
   .sino-page .benefit-grid article > span { width: 96px; height: 96px; flex-basis: 96px; }
   .sino-page .benefit-grid article > span img { width: 54px; height: 54px; }
   .sino-page .benefit-grid p { width: 235px; margin-top: 36px; font-size: 18px; line-height: 24px; }
@@ -108,8 +105,6 @@
 }
 
 /* Exported glyphs retain their Figma proportions within the circular tiles. */
-.sino-page .sino-feature-icon { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: #fff; }
-.sino-page .sino-feature-icon img { padding: 0; border-radius: 0; background: none; object-fit: contain; }
 .sino-page .benefit-grid article > span { background-image: url('../images/sino-benefit-circle.svg'); }
 .sino-page .detail-faq summary::after { background-image: url('../images/sino-faq-plus.svg'); }
 .sino-page .detail-faq details[open] summary::after { background-image: url('../images/sino-faq-minus.svg'); }

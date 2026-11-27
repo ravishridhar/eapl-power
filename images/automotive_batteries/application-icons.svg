@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="tractor" viewBox="0 0 48 48">
+    <circle cx="13" cy="34" r="8"/><circle cx="36" cy="36" r="6"/>
+    <path d="M13 26V11h13l4 16h10v3M10 11h18M22 33h8M35 27V17h4M17 15h5l2 8h-7z"/>
+  </symbol>
+  <symbol id="field" viewBox="0 0 48 48">
+    <path d="M5 24h38M5 39l13-15M17 43l10-19m4 19 4-19m8 16-1-16M24 24V10m0 7c-6 0-9-3-9-8 6 0 9 3 9 8Zm0-3c0-5 4-8 9-8 0 5-4 8-9 8Z"/>
+  </symbol>
+  <symbol id="season" viewBox="0 0 48 48">
+    <rect x="7" y="10" width="34" height="32" rx="4"/>
+    <path d="M15 6v8m18-8v8M7 19h34m-17 18V26m0 6c-5 0-8-2-8-6 5 0 8 2 8 6Zm0 0c5 0 8-2 8-6-5 0-8 2-8 6Z"/>
+  </symbol>
+  <symbol id="terrain" viewBox="0 0 48 48">
+    <path d="M4 35l11-17 8 10L33 9l11 21M5 42c8-7 14-8 21-3s13 3 18-2M29 17l4 4 4-5"/>
+  </symbol>
+  <symbol id="weather" viewBox="0 0 48 48">
+    <path d="M7 23a10 10 0 1 1 17-9M14 3v3M4 10l3 2M4 20h3m11 14a7 7 0 0 1-1-14 10 10 0 0 1 19-1 7.5 7.5 0 0 1 1 15H18Zm3 3-2 5m9-5-2 5m9-5-2 5"/>
+  </symbol>
+  <symbol id="commute" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="17"/>
+    <path d="M24 14v11l7 4M7 10l5-4m29 4-5-4M13 38l-3 4m25-4 3 4"/>
+  </symbol>
+  <symbol id="city" viewBox="0 0 48 48">
+    <path d="M5 42h38M8 42V20h11v22m0 0V7h13v35m0 0V24h8v18M24 13h3m-3 7h3m-3 7h3m-3 7h3M12 26h3m-3 7h3m20-3h2m-2 6h2"/>
+  </symbol>
+  <symbol id="travel" viewBox="0 0 48 48">
+    <path d="M12 25S5 17 5 12a7 7 0 0 1 14 0c0 5-7 13-7 13Zm24 2s-7-8-7-13a7 7 0 0 1 14 0c0 5-7 13-7 13ZM12 25v6a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5v-4"/>
+    <circle cx="12" cy="12" r="1.5"/><circle cx="36" cy="14" r="1.5"/>
+  </symbol>
+  <symbol id="family-car" viewBox="0 0 48 48">
+    <path d="M7 25l5-10a4 4 0 0 1 4-2h16a4 4 0 0 1 4 2l5 10M7 25h34l2 5v7H5v-7l2-5Zm2 12v4h6v-4m18 0v4h6v-4m-28-9 6 2m20-2-6 2M24 14v10"/>
+  </symbol>
+  <symbol id="truck" viewBox="0 0 48 48">
+    <path d="M5 32V13h24v19M29 19h8l6 8v6h-4m-10 0h2m-13 0h11m-24 0h5m20-13v7h13"/>
+    <circle cx="14" cy="34" r="4"/><circle cx="35" cy="34" r="4"/>
+  </symbol>
+  <symbol id="long-haul" viewBox="0 0 48 48">
+    <path d="M4 16h27v16m-14 0h14m-27 0h5m22-11h7l6 7v4h-5m-8 0h1M6 11h14M4 39h39"/>
+    <circle cx="13" cy="32" r="4"/><circle cx="35.5" cy="32" r="3.5"/>
+  </symbol>
+  <symbol id="construction" viewBox="0 0 48 48">
+    <rect x="5" y="32" width="27" height="8" rx="4"/>
+    <path d="M9 32v-9h6v-7h8l4 7v9m-4-16 9-8 10 12-4 4-8-8m8 8 5 4-2 5-7-1m-24 4h15"/>
+  </symbol>
+  <symbol id="fleet" viewBox="0 0 48 48">
+    <path d="M5 19V9h21v12H14m12-9h7l5 6v3h-5M5 21h3m-3 16V25h26v13H14m17-10h8l5 6v4h-5m-8 0h2m-28 0h3"/>
+    <circle cx="11" cy="21" r="3"/><circle cx="30" cy="21" r="3"/><circle cx="11" cy="38" r="3"/><circle cx="36" cy="38" r="3"/>
+  </symbol>
+  <symbol id="road" viewBox="0 0 48 48">
+    <path d="M6 43 18 5m24 38L30 5m-6 1v7m0 22v7m-7-13 4-9h6l4 9-3 3h-8z"/>
+  </symbol>
+</svg>

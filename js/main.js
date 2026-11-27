@@ -182,19 +182,58 @@ document.querySelectorAll('.mobile-nav-trigger').forEach((trigger) => {
 });
 
 const benefitTrack = document.querySelector('.benefit-grid');
-if (benefitTrack && !document.body.classList.contains('sino-page')) {
-  const benefitDots = [...document.querySelectorAll('.benefit-pagination i')];
-  const benefitCurrent = document.querySelector('.benefit-count strong');
-  const updateBenefits = () => {
-    const step = benefitTrack.querySelector('article').offsetWidth + parseFloat(getComputedStyle(benefitTrack).gap || 0);
-    const index = Math.min(benefitDots.length - 1, Math.round(benefitTrack.scrollLeft / step));
-    benefitCurrent.textContent = formatCount(index + 1);
-    benefitDots.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === index));
+if (benefitTrack) {
+  const cards = [...benefitTrack.querySelectorAll('article')];
+  const pagination = document.querySelector('.benefit-pagination');
+  const current = document.querySelector('.benefit-count strong');
+  const total = document.querySelector('.benefit-count span');
+  const previous = document.querySelector('.benefit-prev');
+  const next = document.querySelector('.benefit-next');
+  let positions = [0];
+  let active = 0;
+
+  const goTo = (index) => {
+    const left = positions[index];
+    if (left === undefined) return;
+    const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+    benefitTrack.scrollTo({ left, behavior });
   };
-  document.querySelector('.benefit-prev')?.addEventListener('click', () => benefitTrack.scrollBy({ left: -(benefitTrack.querySelector('article').offsetWidth + 30), behavior: 'smooth' }));
-  document.querySelector('.benefit-next')?.addEventListener('click', () => benefitTrack.scrollBy({ left: benefitTrack.querySelector('article').offsetWidth + 30, behavior: 'smooth' }));
-  benefitDots.forEach((dot, index) => dot.addEventListener('click', () => benefitTrack.scrollTo({ left: index * (benefitTrack.querySelector('article').offsetWidth + 30), behavior: 'smooth' })));
+  const updateBenefits = () => {
+    active = positions.reduce((closest, left, index) =>
+      Math.abs(left - benefitTrack.scrollLeft) < Math.abs(positions[closest] - benefitTrack.scrollLeft)
+        ? index : closest, 0);
+    current.textContent = formatCount(active + 1);
+    [...pagination.children].forEach((button, index) => {
+      button.classList.toggle('active', index === active);
+      if (index === active) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+    previous.disabled = active === 0;
+    next.disabled = active === positions.length - 1;
+  };
+  const rebuildBenefits = () => {
+    const maxScroll = benefitTrack.scrollWidth - benefitTrack.clientWidth;
+    const start = cards[0].getBoundingClientRect().left;
+    positions = [0];
+    for (const card of cards.slice(1)) {
+      const left = Math.min(maxScroll, card.getBoundingClientRect().left - start);
+      if (left - positions[positions.length - 1] > 1) positions.push(left);
+    }
+    total.textContent = '— ' + formatCount(positions.length);
+    pagination.replaceChildren(...positions.map((_, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', 'Show benefits position ' + (index + 1));
+      button.addEventListener('click', () => goTo(index));
+      return button;
+    }));
+    updateBenefits();
+  };
+  previous.addEventListener('click', () => goTo(active - 1));
+  next.addEventListener('click', () => goTo(active + 1));
   benefitTrack.addEventListener('scroll', updateBenefits, { passive: true });
+  new ResizeObserver(rebuildBenefits).observe(benefitTrack);
+  rebuildBenefits();
 }
 
 mobileMenu?.querySelectorAll('a').forEach((link) => {

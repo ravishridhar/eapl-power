@@ -3,7 +3,30 @@
   background-image: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/lithtec-sine/hero-compressed.webp');
 }
 .lithtec-ups-page .detail-hero-inner > img:not(.wise-choice) { display: none; }
-.lithtec-ups-page .summary-stat:nth-child(3) { margin-left: 19px; }
+
+@media (min-width: 768px) {
+  body.product-detail-page.lithtec-ups-page .detail-hero {
+    position: relative;
+    isolation: isolate;
+    background: linear-gradient(180deg, #0a1e3c, #153c79 55%, #0c2d61);
+  }
+
+  /* Keep the product artwork within the viewport, even when the hero is tall. */
+  .lithtec-ups-page .detail-hero::before {
+    position: absolute;
+    z-index: -1;
+    inset-inline: 0;
+    top: 50%;
+    aspect-ratio: 2880 / 1292;
+    max-height: 100%;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),
+      url('../images/lithtec-sine/hero-compressed.webp') center / contain no-repeat;
+    mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 88%, transparent);
+    pointer-events: none;
+    content: '';
+  }
+}
 
 @media (min-width: 1200px) {
   .lithtec-ups-page .detail-hero-inner { padding-top: 110px; }
@@ -12,10 +35,10 @@
   .lithtec-ups-page .detail-hero-copy h1 { width: 579px; letter-spacing: 1px; white-space: nowrap; }
   .lithtec-ups-page .detail-hero-copy > span { font-weight: 400; }
   .lithtec-ups-page .detail-hero-copy .wise-choice { margin-top: 86px; }
-  .lithtec-ups-page .summary-grid { grid-template-columns: 470px 360px 360px; gap: 31px; }
+  .lithtec-ups-page .summary-grid { grid-template-columns: minmax(0,470fr) repeat(2,minmax(0,360fr)); gap: 31px; }
   .lithtec-ups-page .summary-grid h2 { margin: 30px 0 20px; font-size: 48px; line-height: 54px; }
   .lithtec-ups-page .summary-grid > div:first-child > p { font-size: 15px; line-height: 22px; }
-  .lithtec-ups-page .summary-stat { width: 360px; height: 240px; min-height: 240px; padding: 25px 20px; gap: 9px; }
+  .lithtec-ups-page .summary-stat { width: 100%; height: 240px; min-height: 240px; padding: 25px 20px; gap: 9px; }
   .lithtec-ups-page .summary-stat > img { width: 121px; height: 122px; flex-basis: 121px; }
   .lithtec-ups-page .summary-stat p { margin-top: 20px; font-size: 20px; line-height: 20px; }
   .lithtec-ups-page .summary-stat strong { margin-top: 20px; font-size: 32px; line-height: 40px; letter-spacing: 0; }
