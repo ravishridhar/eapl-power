@@ -181,6 +181,42 @@ document.querySelectorAll('.mobile-nav-trigger').forEach((trigger) => {
   });
 });
 
+const faqMotion = matchMedia('(prefers-reduced-motion: reduce)');
+document.querySelectorAll('.detail-faq details, .faq-list details').forEach((details) => {
+  const summary = details.querySelector('summary');
+  let animation;
+
+  summary.addEventListener('click', (event) => {
+    if (!details.animate || event.defaultPrevented) return;
+    event.preventDefault();
+
+    const expand = !details.open || details.classList.contains('faq-closing');
+    const start = details.getBoundingClientRect().height;
+    animation?.cancel();
+    animation = undefined;
+
+    if (faqMotion.matches) {
+      details.open = expand;
+      details.classList.remove('faq-closing');
+      return;
+    }
+
+    details.open = expand;
+    const end = details.getBoundingClientRect().height;
+    details.open = true;
+    details.classList.toggle('faq-closing', !expand);
+    animation = details.animate(
+      { height: [start + 'px', end + 'px'], minHeight: ['0px', '0px'] },
+      { duration: 240, easing: 'cubic-bezier(.25,.7,.3,1)' }
+    );
+    animation.onfinish = () => {
+      details.open = expand;
+      details.classList.remove('faq-closing');
+      animation = undefined;
+    };
+  });
+});
+
 const benefitTrack = document.querySelector('.benefit-grid');
 if (benefitTrack) {
   const cards = [...benefitTrack.querySelectorAll('article')];

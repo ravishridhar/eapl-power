@@ -91,7 +91,7 @@
 }
 
 /* Automotive hero artwork; text and product stay separate. */
-.automotive-page .automotive-hero { background: #0e3670 url('../images/automotive_batteries/product-header-background.webp') center/cover no-repeat; }
+.automotive-page .automotive-hero { background: #0e3670 url('../images/automotive_batteries/product-header-background-compressed.webp') center/cover no-repeat; }
 .automotive-page .automotive-hero::after { background: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)); pointer-events: none; }
 .listing-page .automotive-hero h1 { width: 550px; max-width: 100%; font-size: 72px; line-height: 1.18; margin: 0; font-weight: 900; }
 .listing-page .automotive-hero h1 + .automotive-vehicle { width: 312px; margin-top: 30px; padding-top: 25px; border-top: 5px solid #ffdc00; color: #ffdc00; font-size: 32px; line-height: 1.2; }
@@ -112,7 +112,7 @@
 
 /* Same artwork, gradient layers and placement as the Sino Series detail hero. */
 .automotive-page .automotive-battery-hero {
- background: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/automotive_batteries/sino-header-background.webp') center -33px/1440px 646px no-repeat #0e3670;
+ background: linear-gradient(90deg,rgba(10,46,99,.6),rgba(10,46,99,.28) 36%,transparent 60%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/automotive_batteries/sino-header-background-compressed.webp') center -33px/1440px 646px no-repeat #0e3670;
 }
 .automotive-page .automotive-battery-hero::after { background: none; }
 @media(min-width:1600px) {
@@ -120,13 +120,13 @@
 }
 @media(max-width:767px) {
  .automotive-page .automotive-battery-hero {
-  background: linear-gradient(180deg,#0e3670 42%,rgba(10,46,99,.85) 55%,transparent 74%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/automotive_batteries/sino-header-background.webp') calc(50% - 184px) 352px/927px 416px no-repeat #0e3670;
+  background: linear-gradient(180deg,#0e3670 42%,rgba(10,46,99,.85) 55%,transparent 74%),linear-gradient(180deg,transparent 84%,rgba(10,46,99,.85)),url('../images/automotive_batteries/sino-header-background-compressed.webp') calc(50% - 184px) 352px/927px 416px no-repeat #0e3670;
  }
 }
 
 /* Fill wide/zoomed-out viewports without exposing the background image boundary. */
 body.listing-page.automotive-page .automotive-overview {
- background-image: url('../images/automotive_batteries/sino-header-background.webp');
+ background-image: url('../images/automotive_batteries/sino-header-background-compressed.webp');
  background-size: cover !important;
  background-position: center !important;
 }

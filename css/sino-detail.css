@@ -106,8 +106,6 @@
 
 /* Exported glyphs retain their Figma proportions within the circular tiles. */
 .sino-page .benefit-grid article > span { background-image: url('../images/sino-benefit-circle.svg'); }
-.sino-page .detail-faq summary::after { background-image: url('../images/sino-faq-plus.svg'); }
-.sino-page .detail-faq details[open] summary::after { background-image: url('../images/sino-faq-minus.svg'); }
 .sino-page .sino-feature-icon img[src$="sino-feature-wave.svg"] { width: 36.000px; height: 24.174px; }
 .sino-page .sino-feature-icon img[src$="sino-feature-zero.svg"] { width: 36.000px; height: 31.642px; }
 .sino-page .sino-feature-icon img[src$="sino-feature-changeover.svg"] { width: 36.000px; height: 26.810px; }

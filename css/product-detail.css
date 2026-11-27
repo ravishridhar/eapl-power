@@ -116,9 +116,17 @@
 .detail-faq details { margin-bottom: 15px; overflow: hidden; border: 1px solid #dfdfdf; border-radius: 8px; background: #fff; }
 .detail-faq summary { position: relative; min-height: 59px; padding: 16px 64px 16px 25px; cursor: pointer; list-style: none; color: #0a2e63; font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: .2px; }
 .detail-faq summary::-webkit-details-marker { display: none; }
-.detail-faq summary::after { position: absolute; top: 16px; right: 25px; width: 27px; height: 27px; content: ''; background: url('../images/faq-plus.svg') center/contain no-repeat; }
+.detail-faq summary::after { position: absolute; top: 16px; right: 25px; width: 27px; height: 27px; content: ''; background: url('../images/faq-minus.svg') center/contain no-repeat; }
+.detail-faq summary::before {
+  position: absolute; z-index: 1; top: 25px; right: 38px; width: 1px; height: 9px;
+  content: ''; background: #071f4b; border-radius: 1px;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+.detail-faq details[open]:not(.faq-closing) summary::before { transform: rotate(90deg); opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .detail-faq summary::before { transition: none; }
+}
 .detail-faq details[open] summary { min-height: 36px; padding-bottom: 0; }
-.detail-faq details[open] summary::after { background-image: url('../images/faq-minus.svg'); }
 .detail-faq details p { margin: 10px 64px 16px 25px; color: #0a2e63; font-size: 14px; line-height: 20px; }
 
 /* Keep every product detail page on the Sino Series spacing rhythm. */
