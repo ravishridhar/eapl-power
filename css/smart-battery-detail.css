@@ -12,7 +12,7 @@
  .smart-battery-page .detail-hero-copy > span { font-weight: 400; }
  .smart-battery-page .detail-hero-copy .wise-choice { margin-top: 98px; }
  .smart-battery-page .product-summary { padding: 80px 0; min-height: 432px; }
- .smart-battery-page .summary-grid { grid-template-columns: 470px repeat(2,360px); gap: 31px; }
+ .smart-battery-page .summary-grid { grid-template-columns: minmax(0,470fr) repeat(2,minmax(0,360fr)); gap: 31px; }
  .smart-battery-page .summary-grid h2 { margin: 0 0 10px; font-size: 42px; line-height: 48px; }
  .smart-battery-page .summary-grid h3 { margin-bottom: 10px; }
  .smart-battery-page .summary-grid > div:first-child > p { font-size: 13px; line-height: 19px; }
